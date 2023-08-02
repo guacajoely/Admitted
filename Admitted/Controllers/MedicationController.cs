@@ -19,13 +19,13 @@ namespace Admitted.Controllers
         [HttpGet("GetByAdmissionId")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
-            List<Medication> meds = _medicationRepo.GetAllByAdmissionId(admissionId);
+            List<Medication> listOfMeds = _medicationRepo.GetAllByAdmissionId(admissionId);
 
-            if (meds == null)
+            if (listOfMeds == null)
             {
                 return NotFound();
             }
-            return Ok(meds);
+            return Ok(listOfMeds);
         }
 
 

@@ -6,45 +6,45 @@ namespace Admitted.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PeopleController : ControllerBase
+    public class EventsController : ControllerBase
     {
 
-        private readonly IPeopleRepo _peopleRepo;
-        public PeopleController(IPeopleRepo peopleRepo)
+        private readonly IEventsRepo _eventsRepo;
+        public EventsController(IEventsRepo eventsRepo)
         {
-            _peopleRepo = peopleRepo;
+            _eventsRepo = eventsRepo;
         }
 
 
         [HttpGet("GetByAdmissionId")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
-            List<People> listOfPeople = _peopleRepo.GetAllByAdmissionId(admissionId);
+            List<Events> listOfEvents = _eventsRepo.GetAllByAdmissionId(admissionId);
 
-            if (listOfPeople == null)
+            if (listOfEvents == null)
             {
                 return NotFound();
             }
-            return Ok(listOfPeople);
+            return Ok(listOfEvents);
         }
 
 
         [HttpPost]
-        public IActionResult People(People person)
+        public IActionResult Events(Events events)
         {
-            _peopleRepo.Add(person);
-            return CreatedAtAction("GetByAdmissionId", new { id = person.Id }, person);
+            _eventsRepo.Add(events);
+            return CreatedAtAction("GetByAdmissionId", new { id = events.Id }, events);
         }
 
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, People person)
+        public IActionResult Put(int id, Events events)
         {
-            if (id != person.Id)
+            if (id != events.Id)
             {
                 return BadRequest();
             }
-            _peopleRepo.Update(person);
+            _eventsRepo.Update(events);
             return NoContent();
         }
 
@@ -52,7 +52,7 @@ namespace Admitted.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _peopleRepo.Delete(id);
+            _eventsRepo.Delete(id);
             return NoContent();
         }
 
