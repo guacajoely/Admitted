@@ -7,6 +7,5 @@
         public string EventName { get; set; }
         public string EventType { get; set; }
         public int AdmissionId { get; set; }
-     
     }
 }

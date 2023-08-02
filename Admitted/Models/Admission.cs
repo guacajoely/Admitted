@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Admitted.Models
+﻿namespace Admitted.Models
 {
     public class Admission
     {
@@ -15,6 +13,5 @@ namespace Admitted.Models
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public int UserId { get; set; }
-
     }
 }

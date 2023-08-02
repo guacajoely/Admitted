@@ -14,6 +14,5 @@ namespace Admitted.Models
         [DataType(DataType.EmailAddress)]
         [MaxLength(255)]
         public string Email { get; set; }
-
     }
 }

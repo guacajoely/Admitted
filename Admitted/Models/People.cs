@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Admitted.Models
+﻿namespace Admitted.Models
 {
     public class People
     {
