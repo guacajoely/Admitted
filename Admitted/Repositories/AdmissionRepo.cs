@@ -1,7 +1,6 @@
 ﻿using Admitted.Models;
 using Admitted.Utils;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Repositories
 {

@@ -7,6 +7,7 @@ namespace Admitted.Repositories
     {
         public UserRepo(IConfiguration configuration) : base(configuration) { }
 
+
         public User GetByEmail(string email)
         {
             using (var conn = Connection)
@@ -41,6 +42,7 @@ namespace Admitted.Repositories
             }
         }
 
+
         public void Add(User user)
         {
             using (var conn = Connection)
@@ -59,5 +61,8 @@ namespace Admitted.Repositories
                 }
             }
         }
+
+
+
     }
 }
