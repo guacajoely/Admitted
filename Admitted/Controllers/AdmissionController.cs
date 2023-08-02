@@ -1,6 +1,8 @@
-﻿using Admitted.Repositories;
+﻿using Admitted.Models;
+using Admitted.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Controllers
 {
@@ -25,6 +27,14 @@ namespace Admitted.Controllers
                 return NotFound();
             }
             return Ok(admission);
+        }
+
+
+        [HttpPost]
+        public IActionResult Admission(Admission admission)
+        {
+            _admissionRepo.Add(admission);
+            return CreatedAtAction("GetByUserId", new { id = admission.Id }, admission);
         }
 
 
