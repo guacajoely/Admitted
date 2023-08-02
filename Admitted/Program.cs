@@ -16,6 +16,7 @@ namespace Admitted
             builder.Services.AddTransient<IUserRepo, UserRepo>();
             builder.Services.AddTransient<IAdmissionRepo, AdmissionRepo>();
             builder.Services.AddTransient<IPeopleRepo, PeopleRepo>();
+            builder.Services.AddTransient<IMedicationRepo, MedicationRepo>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
