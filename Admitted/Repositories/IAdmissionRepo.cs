@@ -7,5 +7,6 @@ namespace Admitted.Repositories
         Admission GetByUserId(int userId);
         void Add(Admission admission);
         void Update(Admission admission);
+        void Delete(int id);
     }
 }

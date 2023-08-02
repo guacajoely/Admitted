@@ -17,6 +17,7 @@ namespace Admitted.Controllers
             _admissionRepo = admissionRepo;
         }
 
+
         [HttpGet("GetByUserId")]
         public IActionResult GetByUserId(int userId)
         {
@@ -37,6 +38,7 @@ namespace Admitted.Controllers
             return CreatedAtAction("GetByUserId", new { id = admission.Id }, admission);
         }
 
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Admission admission)
         {
@@ -49,6 +51,12 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _admissionRepo.Delete(id);
+            return NoContent();
+        }
 
 
 

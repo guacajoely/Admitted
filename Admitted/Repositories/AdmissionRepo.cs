@@ -60,7 +60,6 @@ namespace Admitted.Repositories
         }
 
 
-
         public void Add(Admission admission)
         {
             using (var conn = Connection)
@@ -121,6 +120,24 @@ namespace Admitted.Repositories
                     cmd.Parameters.AddWithValue("@DoctorMeetTime", DbUtils.ValueOrDBNull(admission.DoctorMeetTime));
                     cmd.Parameters.AddWithValue("@EstimatedStayDays", DbUtils.ValueOrDBNull(admission.EstimatedStayDays));
                     cmd.Parameters.AddWithValue("@EndDateTime", DbUtils.ValueOrDBNull(admission.EndDateTime));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText =
+                        @"DELETE FROM Admission
+                            WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
                 }
