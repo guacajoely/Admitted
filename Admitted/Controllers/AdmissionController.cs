@@ -1,8 +1,6 @@
 ﻿using Admitted.Models;
 using Admitted.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Controllers
 {
@@ -57,9 +55,6 @@ namespace Admitted.Controllers
             _admissionRepo.Delete(id);
             return NoContent();
         }
-
-
-
 
 
 
