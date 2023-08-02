@@ -92,6 +92,42 @@ namespace Admitted.Repositories
         }
 
 
+        public void Update(Admission admission)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Admission
+                        SET
+                            [Reason] = @Reason,
+                            [HospitalName] = @HospitalName,
+                            [RoomNum] = @RoomNum,
+                            [RoomPhoneNum] = @RoomPhoneNum,
+                            [NurseChangeTime] = @NurseChangeTime,
+                            [DoctorMeetTime] = @DoctorMeetTime,
+                            [EstimatedStayDays] = @EstimatedStayDays,
+                            [EndDateTime] = @EndDateTime
+                        WHERE Id = @Id
+                        ";
+                    cmd.Parameters.AddWithValue("@Id", admission.Id);
+                    cmd.Parameters.AddWithValue("@Reason", admission.Reason);
+                    cmd.Parameters.AddWithValue("@HospitalName", admission.HospitalName);
+                    cmd.Parameters.AddWithValue("@RoomNum", admission.RoomNum);
+                    cmd.Parameters.AddWithValue("@RoomPhoneNum", DbUtils.ValueOrDBNull(admission.RoomPhoneNum));
+                    cmd.Parameters.AddWithValue("@NurseChangeTime", DbUtils.ValueOrDBNull(admission.NurseChangeTime));
+                    cmd.Parameters.AddWithValue("@DoctorMeetTime", DbUtils.ValueOrDBNull(admission.DoctorMeetTime));
+                    cmd.Parameters.AddWithValue("@EstimatedStayDays", DbUtils.ValueOrDBNull(admission.EstimatedStayDays));
+                    cmd.Parameters.AddWithValue("@EndDateTime", DbUtils.ValueOrDBNull(admission.EndDateTime));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
 
 
 

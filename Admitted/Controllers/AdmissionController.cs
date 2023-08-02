@@ -37,7 +37,16 @@ namespace Admitted.Controllers
             return CreatedAtAction("GetByUserId", new { id = admission.Id }, admission);
         }
 
-
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Admission admission)
+        {
+            if (id != admission.Id)
+            {
+                return BadRequest();
+            }
+            _admissionRepo.Update(admission);
+            return NoContent();
+        }
 
 
 
