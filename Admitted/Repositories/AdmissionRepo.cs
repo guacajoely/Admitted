@@ -1,5 +1,7 @@
 ﻿using Admitted.Models;
 using Admitted.Utils;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Repositories
 {
@@ -8,7 +10,23 @@ namespace Admitted.Repositories
         public AdmissionRepo(IConfiguration configuration) : base(configuration) { }
 
 
-
+        private Admission NewAdmissionFromReader(SqlDataReader reader)
+        {
+            return new Admission()
+            {
+                Id = DbUtils.GetInt(reader, "Id"),
+                Reason = DbUtils.GetString(reader, "Reason"),
+                HospitalName = DbUtils.GetString(reader, "HospitalName"),
+                RoomNum = DbUtils.GetNullableInt(reader, "RoomNum"),
+                RoomPhoneNum = DbUtils.GetString(reader, "RoomPhoneNum"),
+                NurseChangeTime = DbUtils.GetNullableInt(reader, "NurseChangeTime"),
+                DoctorMeetTime = DbUtils.GetNullableInt(reader, "DoctorMeetTime"),
+                EstimatedStayDays = DbUtils.GetNullableInt(reader, "EstimatedStayDays"),
+                StartDateTime = DbUtils.GetDateTime(reader, "StartDateTime"),
+                EndDateTime = DbUtils.GetNullableDateTime(reader, "EndDateTime"),
+                UserId = DbUtils.GetInt(reader, "UserId")
+            };
+        }
 
 
         public Admission GetByUserId(int userId)
@@ -20,7 +38,7 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, Reason, HospitalName, RoomNum, RoomPhoneNum, NurseChangeTime, DoctorMeetTime, EstimatedStayDays, StartDateTime, EndDateTime, UserId
-                          FROM Admission
+                         FROM Admission
                          WHERE UserId = @userId";
 
                     DbUtils.AddParameter(cmd, "@userId", userId);
@@ -28,23 +46,12 @@ namespace Admitted.Repositories
                     Admission admission = null;
 
                     var reader = cmd.ExecuteReader();
+
                     if (reader.Read())
                     {
-                        admission = new Admission()
-                        {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            Reason = DbUtils.GetString(reader, "Reason"),
-                            HospitalName = DbUtils.GetString(reader, "HospitalName"),
-                            RoomNum = DbUtils.GetInt(reader, "RoomNum"),
-                            RoomPhoneNum = DbUtils.GetString(reader, "RoomPhoneNum"),
-                            NurseChangeTime = DbUtils.GetInt(reader, "NurseChangeTime"),
-                            DoctorMeetTime = DbUtils.GetInt(reader, "DoctorMeetTime"),
-                            EstimatedStayDays = DbUtils.GetInt(reader, "EstimatedStayDays"),
-                            StartDateTime = DbUtils.GetDateTime(reader, "StartDateTime"),
-                            EndDateTime = DbUtils.GetDateTime(reader, "EndDateTime"),
-                            UserId = DbUtils.GetInt(reader, "UserId")
-                        };
+                        admission = NewAdmissionFromReader(reader);
                     }
+
                     reader.Close();
 
                     return admission;
