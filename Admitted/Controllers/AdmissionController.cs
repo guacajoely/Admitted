@@ -16,7 +16,7 @@ namespace Admitted.Controllers
         }
 
 
-        [HttpGet("GetByUserId")]
+        [HttpGet("{userId}")]
         public IActionResult GetByUserId(int userId)
         {
             var admission = _admissionRepo.GetByUserId(userId);

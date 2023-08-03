@@ -12,8 +12,8 @@ export default function Login({ setIsLoggedIn }) {
     const loginSubmit = (e) => {
         e.preventDefault();
         login({ email, password })
-            .then(r => {
-                if (r) {
+            .then((user) => {
+                if (user) {
                     setIsLoggedIn(true)
                     navigate('/')
                 }
@@ -24,7 +24,7 @@ export default function Login({ setIsLoggedIn }) {
     };
 
     return (
-        <Form onSubmit={loginSubmit}>
+        <Form className="m-5" onSubmit={loginSubmit}>
             <fieldset>
                 <FormGroup>
                     <Label for="email">Email</Label>

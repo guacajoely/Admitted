@@ -14,5 +14,4 @@ export default function Authorize({ setIsLoggedIn }) {
             <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
     );
-
 }

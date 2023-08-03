@@ -6,22 +6,21 @@ import { useEffect } from 'react';
 import Authorize from './Components/Authorize';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        if (!localStorage.getItem("user")) {
-            setIsLoggedIn(false)
+        if (localStorage.getItem("user")) {
+            setIsLoggedIn(true)
         }
-    }, [isLoggedIn])
+    })
 
     return (
         <Router>
             <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-            {isLoggedIn ?
-                <ApplicationViews />
-                :
+            {!isLoggedIn ?
                 <Authorize setIsLoggedIn={setIsLoggedIn} />
+                :
+                <ApplicationViews />
             }
         </Router>
     );
