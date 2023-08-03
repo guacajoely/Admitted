@@ -17,7 +17,7 @@ namespace Admitted.Controllers
         }
 
 
-        [HttpGet("GetByAdmissionId")]
+        [HttpGet("{admissionId}")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
             List<Questions> listOfQuestions = _questionsRepo.GetAllByAdmissionId(admissionId);

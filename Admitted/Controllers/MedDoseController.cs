@@ -17,7 +17,7 @@ namespace Admitted.Controllers
         }
 
 
-        [HttpGet("GetByMedId")]
+        [HttpGet("{medId}")]
         public IActionResult GetByMedId(int medId)
         {
             List<MedicationDose> listOfDoses = _medDoseRepo.GetAllByMedId(medId);
