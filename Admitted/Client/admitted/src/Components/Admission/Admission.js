@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Container, Button } from "reactstrap"
 import { useState, useEffect } from "react";
 import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
+import { PeopleList } from "../People/PeopleList.js";
 
 export const Admission = ({ userId }) => {
 
@@ -56,6 +57,7 @@ export const Admission = ({ userId }) => {
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
         admission.id ?
         //IF YES, DISPLAY DASHBOARD
+        <>
         <Container>
             <div>
                 <h1>CURRENT STAY</h1>
@@ -72,6 +74,10 @@ export const Admission = ({ userId }) => {
             <Button tag={Link} to="/admission/edit">Edit Details</Button>
             <Button color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
         </Container>
+        <Container>
+            <PeopleList admissionId={admission.id} />
+        </Container>
+        </>
 
         //IF NO, DISPLAY "Create Stay" button
         :
