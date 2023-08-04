@@ -38,3 +38,14 @@ export const editPerson = (person) => {
     })
 }
 
+export const deletePerson = (id) => {
+    return fetch(`${baseUrl}/${id}`, {
+        method: "DELETE",
+    }).then(getAllPeople)
+}
+
+export const getAllPeople = () => {
+    return fetch(baseUrl)
+        .then((res) => res.json())
+};
+

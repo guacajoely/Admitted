@@ -1,16 +1,33 @@
 import { Button } from "reactstrap";
-import { getPeopleList } from "../../Managers/PeopleManager.js";
+import { deletePerson, getPeopleList } from "../../Managers/PeopleManager.js";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const PeopleList = ({ admissionId }) => {
 
     const [peopleList, setPeopleList] = useState([]);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         getPeopleList(admissionId)
             .then((people) => setPeopleList(people));
     }, [admissionId])
+
+    const handleDeleteButton = (event) => {
+        event.preventDefault();
+        const results = (window.confirm('Are you sure you want to delete this person?'))
+        const [, personId] = event.target.id.split("--")
+        const parsedId = parseInt(personId)
+
+        if (results) {
+            deletePerson(parsedId)
+                .then(getPeopleList(admissionId))
+                .then(navigate(`/`))
+                window.location.reload()
+
+        };
+    };
 
     return (
         
@@ -40,7 +57,7 @@ export const PeopleList = ({ admissionId }) => {
                                 <td>{person.staffTitle}</td>
                                 <td>{formattedDate}</td>
                                 <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
-                                <Button className="btn-sm m-1" color="danger" tag={Link} to={`/people/create/${admissionId}`}>Delete</Button>
+                                <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                             </tr>
                         )
                     })}
