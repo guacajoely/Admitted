@@ -1,5 +1,6 @@
 import React from "react";
-import { Admission } from "./Admission/Admission.js";
+import { Admission } from "../Admission/Admission.js";
+import "./Dashboard.css"
 
 export default function Dashboard() {
 
@@ -8,18 +9,9 @@ export default function Dashboard() {
 
   return (
     <>
-     <h1 style={{
-      position: "fixed",
-      left: 0,
-      right: 0,
-      textAlign: "center",
-      fontSize: "larger",
-    }}>Hello, {UserObject.fullName}
     
     {<Admission userId={UserObject.id} />}
     
-    </h1>
-
     </>
 
 

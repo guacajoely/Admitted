@@ -4,3 +4,19 @@ export const getPeopleList = (admissionId) => {
     return fetch(`${baseUrl}/${admissionId}`)
         .then((res) => res.json())
 };
+
+export const addPerson = (personObject) => {
+    return fetch(baseUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(personObject),
+    })
+    .then((res) => {
+        if (!res.ok) {
+            throw new Error("Failed to create new Person")
+        }
+        return res.json();
+    });
+};

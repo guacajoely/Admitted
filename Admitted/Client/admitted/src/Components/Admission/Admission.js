@@ -58,8 +58,8 @@ export const Admission = ({ userId }) => {
         admission.id ?
         //IF YES, DISPLAY DASHBOARD
         <>
-        <Container>
-            <div>
+        <Container className="admission-section">
+            <div className="admission-details">
                 <h1>CURRENT STAY</h1>
                 <div className="admission-prop">Name: {UserObject.fullName}</div>
                 <div className="admission-prop">Hospital: {admission.hospitalName}</div>
@@ -71,8 +71,8 @@ export const Admission = ({ userId }) => {
                 <div className="admission-prop">Nurse Shift Change: {admission.nurseChangeTime}</div>
                 <div className="admission-prop">Daily Doctor Meeting: {admission.doctorMeetTime}</div>
             </div>
-            <Button tag={Link} to="/admission/edit">Edit Details</Button>
-            <Button color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
+            <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
+            <Button className="m-1" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
         </Container>
         <Container>
             <PeopleList admissionId={admission.id} />
