@@ -16,6 +16,13 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok(_peopleRepo.GetAll());
+        }
+
+
         [HttpGet("{admissionId}")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
@@ -33,7 +40,7 @@ namespace Admitted.Controllers
         public IActionResult People(People person)
         {
             _peopleRepo.Add(person);
-            return CreatedAtAction("GetByAdmissionId", new { id = person.Id }, person);
+            return CreatedAtAction("Get", new { id = person.Id }, person);
         }
 
 

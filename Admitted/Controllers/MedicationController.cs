@@ -16,6 +16,13 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok(_medicationRepo.GetAll());
+        }
+
+
         [HttpGet("{admissionId}")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
@@ -33,7 +40,7 @@ namespace Admitted.Controllers
         public IActionResult Medication(Medication medication)
         {
             _medicationRepo.Add(medication);
-            return CreatedAtAction("GetByAdmissionId", new { id = medication.Id }, medication);
+            return CreatedAtAction("Get", new { id = medication.Id }, medication);
         }
 
 

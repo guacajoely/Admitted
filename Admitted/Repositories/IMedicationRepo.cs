@@ -4,6 +4,7 @@ namespace Admitted.Repositories
 {
     public interface IMedicationRepo
     {
+        List<Medication> GetAll();
         List<Medication> GetAllByAdmissionId(int admissionId);
         void Add(Medication medication);
         void Update(Medication medication); 

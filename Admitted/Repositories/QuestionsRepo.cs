@@ -23,6 +23,33 @@ namespace Admitted.Repositories
         }
 
 
+        public List<Questions> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, QuestionDateTime, AnswerDateTime, QuestionText, AnswerText, AdmissionId
+                         FROM Questions";
+
+                    var listOfQuestions = new List<Questions>();
+
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfQuestions.Add(NewQuestionFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return listOfQuestions;
+                }
+            }
+        }
+
+
         public List<Questions> GetAllByAdmissionId(int admissionId)
         {
             using (var conn = Connection)

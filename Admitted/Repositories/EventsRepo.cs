@@ -22,6 +22,33 @@ namespace Admitted.Repositories
         }
 
 
+        public List<Events> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, EventDateTime, EventName, EventType, AdmissionId
+                         FROM Events";
+
+                    var listOfEvents = new List<Events>();
+
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfEvents.Add(NewEventFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return listOfEvents;
+                }
+            }
+        }
+
+
         public List<Events> GetAllByAdmissionId(int admissionId)
         {
             using (var conn = Connection)

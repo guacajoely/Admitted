@@ -12,7 +12,7 @@ function App() {
         if (localStorage.getItem("user")) {
             setIsLoggedIn(true)
         }
-    })
+    }, [isLoggedIn])
 
     return (
         <Router>

@@ -22,6 +22,33 @@ namespace Admitted.Repositories
         }
 
 
+        public List<People> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, StaffName, StaffTitle, MeetDateTime, AdmissionId
+                         FROM People";
+
+                    var listOfPeople = new List<People>();
+
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfPeople.Add(NewPersonFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return listOfPeople;
+                }
+            }
+        }
+
+
         public List<People> GetAllByAdmissionId(int admissionId)
         {
             using (var conn = Connection)

@@ -1,6 +1,7 @@
 ﻿using Admitted.Models;
 using Admitted.Utils;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Repositories
 {
@@ -25,6 +26,32 @@ namespace Admitted.Repositories
                 EndDateTime = DbUtils.GetNullableDateTime(reader, "EndDateTime"),
                 UserId = DbUtils.GetInt(reader, "UserId")
             };
+        }
+
+        public List<Admission> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                         SELECT Id, Reason, HospitalName, RoomNum, RoomPhoneNum, NurseChangeTime, DoctorMeetTime, EstimatedStayDays, StartDateTime, EndDateTime, UserId
+                         FROM Admission
+                    ";
+                    var reader = cmd.ExecuteReader();
+
+                    var admissions = new List<Admission>();
+
+                    while (reader.Read())
+                    {
+                        admissions.Add(NewAdmissionFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return admissions;
+                }
+            }
         }
 
 

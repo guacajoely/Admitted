@@ -16,6 +16,13 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok(_eventsRepo.GetAll());
+        }
+
+
         [HttpGet("{admissionId}")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
@@ -33,7 +40,7 @@ namespace Admitted.Controllers
         public IActionResult Events(Events events)
         {
             _eventsRepo.Add(events);
-            return CreatedAtAction("GetByAdmissionId", new { id = events.Id }, events);
+            return CreatedAtAction("Get", new { id = events.Id }, events);
         }
 
 

@@ -23,6 +23,33 @@ namespace Admitted.Repositories
         }
 
 
+        public List<Medication> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, MedicationName, Purpose, FrequencyHours, PrescribeDateTime, AdmissionId
+                         FROM Medication";
+
+                    var listOfMeds = new List<Medication>();
+
+                    var reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        listOfMeds.Add(NewMedFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return listOfMeds;
+                }
+            }
+        }
+
+
         public List<Medication> GetAllByAdmissionId(int admissionId)
         {
             using (var conn = Connection)

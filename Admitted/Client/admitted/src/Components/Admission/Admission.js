@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CardBody, Container } from "reactstrap"
+import { CardBody, Container, Button } from "reactstrap"
 import { useState, useEffect } from "react";
 import { getActiveAdmission } from "../../Managers/AdmissionManager.js";
 
@@ -21,7 +21,7 @@ export const Admission = ({ userId }) => {
     return (
 
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
-        admission ?
+        admission.id ?
         //IF YES, DISPLAY DASHBOARD
         <Container>
             <div>
@@ -42,7 +42,8 @@ export const Admission = ({ userId }) => {
         :
         <>
         <Container>
-        <div>no active admission</div>
+        <div className="m-5">According to our records, you aren't currently admitted.</div>
+        <Button tag={Link} to="/admission/create">Create a Hospital Stay</Button>
         </Container>
         </>
     )
