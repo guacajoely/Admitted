@@ -1,7 +1,6 @@
 ﻿using Admitted.Models;
 using Admitted.Utils;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Repositories
 {
@@ -65,7 +64,7 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, Reason, HospitalName, RoomNum, RoomPhoneNum, NurseChangeTime, DoctorMeetTime, EstimatedStayDays, StartDateTime, EndDateTime, UserId
                          FROM Admission
-                         WHERE UserId = @userId";
+                         WHERE UserId = @userId AND EndDateTime IS NULL";
 
                     DbUtils.AddParameter(cmd, "@userId", userId);
 

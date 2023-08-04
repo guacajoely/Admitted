@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import { AdmissionForm } from "./Admission/AdmissionForm.js";
+import { AdmissionEdit } from "./Admission/AdmissionEdit.js";
 
 export default function ApplicationViews() {
 
@@ -9,6 +10,7 @@ export default function ApplicationViews() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/admission/create" element={<AdmissionForm />} />
+        <Route path="/admission/edit" element={<AdmissionEdit />} />
       </Routes>
    );
  

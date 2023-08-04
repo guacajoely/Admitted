@@ -5,7 +5,6 @@ export const getActiveAdmission = (userId) => {
         .then((res) => res.json())
 };
 
-
 export const addAdmission = (admissionObject) => {
     return fetch(baseUrl, {
         method: "POST",
@@ -21,3 +20,18 @@ export const addAdmission = (admissionObject) => {
         return res.json();
     });
 };
+
+
+export const editAdmission = (admissionObject) => {
+    //make sure your parameter matches the one you are sending to the API
+    return fetch(`${baseUrl}/${admissionObject.Id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(admissionObject)
+    })
+}
+
+
+

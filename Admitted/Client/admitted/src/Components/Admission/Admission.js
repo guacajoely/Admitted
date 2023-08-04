@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { CardBody, Container, Button } from "reactstrap"
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Button } from "reactstrap"
 import { useState, useEffect } from "react";
-import { getActiveAdmission } from "../../Managers/AdmissionManager.js";
+import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
 
 export const Admission = ({ userId }) => {
 
@@ -15,8 +15,41 @@ export const Admission = ({ userId }) => {
     const localUser = localStorage.getItem("user");
     const UserObject = JSON.parse(localUser);
 
+    const navigate = useNavigate();
+
     const AdmissionDateTime = new Date(admission.startDateTime);
     const formattedDate = AdmissionDateTime.toLocaleDateString();
+
+    const currentDate = new Date();
+    const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
+    const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
+
+    const handleDeleteButtonClick = (e) => {
+        e.preventDefault()
+
+        const admissionToEdit = { ...admission }
+
+         const admissionToSendToAPI = {
+            Id: admissionToEdit.id,
+            Reason: admissionToEdit.reason,
+            HospitalName: admissionToEdit.hospitalName,
+            RoomNum: admissionToEdit.roomNum,
+            RoomPhoneNum: admissionToEdit.roomPhoneNum,
+            NurseChangeTime: admissionToEdit.nurseChangeTime,
+            DoctorMeetTime: admissionToEdit.doctorMeetTime,
+            EstimatedStayDays: admissionToEdit.estimatedStayDays,
+            StartDateTime: correctedDate.toISOString(),
+            EndDateTime: correctedDate,
+            UserId: UserObject.id
+        }
+
+        return editAdmission(admissionToSendToAPI)
+            .then(() => {
+                navigate('/')
+                window.location.reload()
+            })
+    }
+   
 
     return (
 
@@ -36,6 +69,8 @@ export const Admission = ({ userId }) => {
                 <div className="admission-prop">Nurse Shift Change: {admission.nurseChangeTime}</div>
                 <div className="admission-prop">Daily Doctor Meeting: {admission.doctorMeetTime}</div>
             </div>
+            <Button tag={Link} to="/admission/edit">Edit Details</Button>
+            <Button color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
         </Container>
 
         //IF NO, DISPLAY "Create Stay" button
