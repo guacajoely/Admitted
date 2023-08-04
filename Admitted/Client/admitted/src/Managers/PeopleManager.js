@@ -20,3 +20,21 @@ export const addPerson = (personObject) => {
         return res.json();
     });
 };
+
+
+export const getPersonById = (id) => {
+    return fetch(`${baseUrl}/GetById?Id=${id}`)
+        .then((res) => res.json())
+};
+
+
+export const editPerson = (person) => {
+    return fetch(`${baseUrl}/${person.Id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(person)
+    })
+}
+

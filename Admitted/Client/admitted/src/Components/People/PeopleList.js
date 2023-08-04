@@ -39,7 +39,7 @@ export const PeopleList = ({ admissionId }) => {
                                 <td>{person.staffName}</td>
                                 <td>{person.staffTitle}</td>
                                 <td>{formattedDate}</td>
-                                <Button className="btn-sm m-1" tag={Link} to={`/people/create/${admissionId}`}>Edit</Button>
+                                <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
                                 <Button className="btn-sm m-1" color="danger" tag={Link} to={`/people/create/${admissionId}`}>Delete</Button>
                             </tr>
                         )

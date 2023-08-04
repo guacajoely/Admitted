@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import { AdmissionForm } from "./Admission/AdmissionForm.js";
 import { AdmissionEdit } from "./Admission/AdmissionEdit.js";
 import { PersonForm } from "./People/PersonForm.js";
+import { PersonEdit } from "./People/PersonEdit.js";
 
 export default function ApplicationViews() {
 
@@ -13,6 +14,7 @@ export default function ApplicationViews() {
         <Route path="/admission/create" element={<AdmissionForm />} />
         <Route path="/admission/edit" element={<AdmissionEdit />} />
         <Route path="/people/create/:admissionId" element={<PersonForm />} />
+        <Route path="/people/edit/:personId" element={<PersonEdit />} />
       </Routes>
    );
  

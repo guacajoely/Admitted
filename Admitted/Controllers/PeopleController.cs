@@ -1,6 +1,7 @@
 ﻿using Admitted.Models;
 using Admitted.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Controllers
 {
@@ -20,6 +21,18 @@ namespace Admitted.Controllers
         public ActionResult Get()
         {
             return Ok(_peopleRepo.GetAll());
+        }
+
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            People person = _peopleRepo.GetPersonById(id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return Ok(person);
         }
 
 

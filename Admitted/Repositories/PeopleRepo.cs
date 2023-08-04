@@ -1,6 +1,7 @@
 ﻿using Admitted.Models;
 using Admitted.Utils;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Repositories
 {
@@ -144,6 +145,37 @@ namespace Admitted.Repositories
                 }
             }
         }
+
+
+        public People GetPersonById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, StaffName, StaffTitle, MeetDateTime, AdmissionId
+                         FROM People
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    People person = null;
+
+                    if (reader.Read())
+                    {
+                        person = NewPersonFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return person;
+                }
+            }
+        }
+
 
 
 
