@@ -142,6 +142,36 @@ namespace Admitted.Repositories
         }
 
 
+        public MedicationDose GetDoseById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, DoseDateTime, MedicationId
+                         FROM MedicationDose
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    MedicationDose dose = null;
+
+                    if (reader.Read())
+                    {
+                        dose = NewDoseFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return dose;
+                }
+            }
+        }
+
+
 
     }
 }

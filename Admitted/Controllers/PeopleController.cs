@@ -24,18 +24,6 @@ namespace Admitted.Controllers
         }
 
 
-        [HttpGet("GetById")]
-        public IActionResult GetById(int id)
-        {
-            People person = _peopleRepo.GetPersonById(id);
-            if (person == null)
-            {
-                return NotFound();
-            }
-            return Ok(person);
-        }
-
-
         [HttpGet("{admissionId}")]
         public IActionResult GetByAdmissionId(int admissionId)
         {
@@ -46,6 +34,18 @@ namespace Admitted.Controllers
                 return NotFound();
             }
             return Ok(listOfPeople);
+        }
+
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            People person = _peopleRepo.GetPersonById(id);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return Ok(person);
         }
 
 

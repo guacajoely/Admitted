@@ -36,6 +36,18 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            Medication singleMed = _medicationRepo.GetMedById(id);
+            if (singleMed == null)
+            {
+                return NotFound();
+            }
+            return Ok(singleMed);
+        }
+
+
         [HttpPost]
         public IActionResult Medication(Medication medication)
         {

@@ -6,6 +6,7 @@ namespace Admitted.Repositories
     {
         List<Questions> GetAll();
         List<Questions> GetAllByAdmissionId(int admissionId);
+        Questions GetQuestionById(int id);
         void Add(Questions question);   
         void Update(Questions question);
         void Delete(int id);

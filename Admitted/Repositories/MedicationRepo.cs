@@ -150,6 +150,36 @@ namespace Admitted.Repositories
         }
 
 
+        public Medication GetMedById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, MedicationName, Purpose, FrequencyHours, PrescribeDateTime, AdmissionId
+                         FROM Medication
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    Medication medication = null;
+
+                    if (reader.Read())
+                    {
+                        medication = NewMedFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return medication;
+                }
+            }
+        }
+
+
 
     }
 }

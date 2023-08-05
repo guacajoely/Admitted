@@ -36,6 +36,18 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            Events singleEvent = _eventsRepo.GetEventById(id);
+            if (singleEvent == null)
+            {
+                return NotFound();
+            }
+            return Ok(singleEvent);
+        }
+
+
         [HttpPost]
         public IActionResult Events(Events events)
         {

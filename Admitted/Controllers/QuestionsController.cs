@@ -37,6 +37,18 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            Questions question = _questionsRepo.GetQuestionById(id);
+            if (question == null)
+            {
+                return NotFound();
+            }
+            return Ok(question);
+        }
+
+
         [HttpPost]
         public IActionResult Questions(Questions question)
         {

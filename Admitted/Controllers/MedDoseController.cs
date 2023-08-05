@@ -37,6 +37,18 @@ namespace Admitted.Controllers
         }
 
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            MedicationDose dose = _medDoseRepo.GetDoseById(id);
+            if (dose == null)
+            {
+                return NotFound();
+            }
+            return Ok(dose);
+        }
+
+
         [HttpPost]
         public IActionResult MedDose(MedicationDose dose)
         {

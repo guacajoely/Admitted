@@ -148,6 +148,36 @@ namespace Admitted.Repositories
         }
 
 
+        public Events GetEventById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                         SELECT Id, EventDateTime, EventName, EventType, AdmissionId
+                         FROM Events
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    Events singleEvent = null;
+
+                    if (reader.Read())
+                    {
+                        singleEvent = NewEventFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return singleEvent;
+                }
+            }
+        }
+
+
 
     }
 }

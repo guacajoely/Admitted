@@ -152,6 +152,36 @@ namespace Admitted.Repositories
         }
 
 
+        public Questions GetQuestionById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, QuestionDateTime, AnswerDateTime, QuestionText, AnswerText, AdmissionId
+                         FROM Questions
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    Questions question = null;
+
+                    if (reader.Read())
+                    {
+                        question = NewQuestionFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return question;
+                }
+            }
+        }
+
+
 
     }
 }
