@@ -7,6 +7,8 @@ import { PersonForm } from "./People/PersonForm.js";
 import { PersonEdit } from "./People/PersonEdit.js";
 import { MedicationForm } from "./Medication/MedicationForm.js";
 import { MedicationEdit } from "./Medication/MedicationEdit.js";
+import { EventForm } from "./Events/EventForm.js";
+import { EventEdit } from "./Events/EventEdit.js";
 
 export default function ApplicationViews() {
 
@@ -19,6 +21,8 @@ export default function ApplicationViews() {
         <Route path="/people/edit/:personId" element={<PersonEdit />} />
         <Route path="/medication/create/:admissionId" element={<MedicationForm />} />
         <Route path="/medication/edit/:medId" element={<MedicationEdit />} />
+        <Route path="/events/create/:admissionId" element={<EventForm />} />
+        <Route path="/events/edit/:eventId" element={<EventEdit />} />
       </Routes>
    );
  

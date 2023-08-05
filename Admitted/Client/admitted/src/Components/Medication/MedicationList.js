@@ -34,9 +34,9 @@ export const MedicationList = ({ admissionId }) => {
     return (
         
         <div className="medication-section">
-            <h1>Medication</h1>
+            <h1>Medication <Button className="btn-sm m-1" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
 
-            <Button className="btn-sm" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button>
+            
 
             <table className="medication-table">
                 <thead>
@@ -45,6 +45,7 @@ export const MedicationList = ({ admissionId }) => {
                         <th style={{width: "20%"}}>Purpose</th>
                         <th style={{width: "20%"}}>Frequency (hours)</th>
                         <th style={{width: "20%"}}>Prescribed Date</th>
+                        <th classname="button-column"></th>
                     </tr>
                 </thead>
 
@@ -60,8 +61,10 @@ export const MedicationList = ({ admissionId }) => {
                                 <td>{med.purpose}</td>
                                 <td>{med.frequencyHours}</td>
                                 <td>{formattedDate}</td>
+                                <td classname="button-column">
                                 <Button className="btn-sm m-1" tag={Link} to={`/medication/edit/${med.id}`}>Edit</Button>
                                 <Button id={`med--${med.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                </td>                           
                             </tr>
                         )
                     })}

@@ -32,9 +32,7 @@ export const PeopleList = ({ admissionId }) => {
     return (
         
         <div className="people-section">
-            <h1>People</h1>
-
-            <Button className="btn-sm" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button>
+            <h1>People <Button className="btn-sm m-1" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button></h1>
 
             <table className="people-table">
                 <thead>
@@ -42,6 +40,7 @@ export const PeopleList = ({ admissionId }) => {
                         <th style={{width: "25%"}}>Name</th>
                         <th style={{width: "25%"}}>Title</th>
                         <th style={{width: "25%"}}>Date Met</th>
+                        <th classname="button-column"></th>
                     </tr>
                 </thead>
 
@@ -56,8 +55,10 @@ export const PeopleList = ({ admissionId }) => {
                                 <td>{person.staffName}</td>
                                 <td>{person.staffTitle}</td>
                                 <td>{formattedDate}</td>
-                                <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
-                                <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                <td classname="button-column">
+                                    <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
+                                    <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                </td>
                             </tr>
                         )
                     })}

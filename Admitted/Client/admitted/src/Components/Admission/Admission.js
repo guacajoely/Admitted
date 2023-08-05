@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
 import { PeopleList } from "../People/PeopleList.js";
 import { MedicationList } from "../Medication/MedicationList.js";
+import { EventList } from "../Events/EventList.js";
 
 export const Admission = ({ userId }) => {
 
@@ -74,10 +75,9 @@ export const Admission = ({ userId }) => {
             </div>
             <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
             <Button className="m-1" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
-        </Container>
-        <Container>
             <PeopleList admissionId={admission.id} />
             <MedicationList admissionId={admission.id} />
+            <EventList admissionId={admission.id} />
         </Container>
         </>
 
