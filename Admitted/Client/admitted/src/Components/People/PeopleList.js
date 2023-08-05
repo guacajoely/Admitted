@@ -1,13 +1,11 @@
 import { Button } from "reactstrap";
 import { deletePerson, getPeopleList } from "../../Managers/PeopleManager.js";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const PeopleList = ({ admissionId }) => {
 
     const [peopleList, setPeopleList] = useState([]);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getPeopleList(admissionId)
@@ -23,16 +21,14 @@ export const PeopleList = ({ admissionId }) => {
         if (results) {
             deletePerson(parsedId)
                 .then(getPeopleList(admissionId))
-                .then(navigate(`/`))
-                window.location.reload()
-
+                .then((people) => setPeopleList(people));
         };
     };
 
     return (
         
         <div className="people-section">
-            <h1>People <Button className="btn-sm m-1" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button></h1>
+            <h1>People <Button className="btn-sm m-1" color="primary" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button></h1>
 
             <table className="people-table">
                 <thead>

@@ -5,6 +5,7 @@ import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManag
 import { PeopleList } from "../People/PeopleList.js";
 import { MedicationList } from "../Medication/MedicationList.js";
 import { EventList } from "../Events/EventList.js";
+import { QuestionList } from "../Questions/QuestionList.js";
 
 export const Admission = ({ userId }) => {
 
@@ -61,23 +62,27 @@ export const Admission = ({ userId }) => {
         //IF YES, DISPLAY DASHBOARD
         <>
         <Container className="admission-section">
-            <div className="admission-details">
                 <h1>CURRENT STAY</h1>
-                <div className="admission-prop">Name: {UserObject.fullName}</div>
-                <div className="admission-prop">Hospital: {admission.hospitalName}</div>
-                <div className="admission-prop">Reason: {admission.reason}</div>
-                <div className="admission-prop">Room #: {admission.roomNum}</div>
-                <div className="admission-prop">Room Phone #: {admission.roomPhoneNum}</div>
-                <div className="admission-prop">Admission Date: {formattedDate}</div>
-                <div className="admission-prop">Estimated Stay Length: {admission.estimatedStayDays} (days)</div>
-                <div className="admission-prop">Nurse Shift Change: {admission.nurseChangeTime}</div>
-                <div className="admission-prop">Daily Doctor Meeting: {admission.doctorMeetTime}</div>
-            </div>
-            <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
-            <Button className="m-1" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
+                <div className="admission-details">
+                    <div className="admission-prop">Name: {UserObject.fullName}</div>
+                    <div className="admission-prop">Hospital: {admission.hospitalName}</div>
+                    <div className="admission-prop">Reason: {admission.reason}</div>
+                    <div className="admission-prop">Room #: {admission.roomNum}</div>
+                    <div className="admission-prop">Room Phone #: {admission.roomPhoneNum}</div>
+                    <div className="admission-prop">Admission Date: {formattedDate}</div>
+                    <div className="admission-prop">Estimated Stay Length: {admission.estimatedStayDays} (days)</div>
+                    <div className="admission-prop">Nurse Shift Change: {admission.nurseChangeTime}</div>
+                    <div className="admission-prop">Daily Doctor Meeting: {admission.doctorMeetTime}</div>
+                </div>
+                <div className="admission-buttons">
+                    <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
+                    <Button className="m-1" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
+                </div>
+            
             <PeopleList admissionId={admission.id} />
             <MedicationList admissionId={admission.id} />
             <EventList admissionId={admission.id} />
+            <QuestionList admissionId={admission.id} />
         </Container>
         </>
 

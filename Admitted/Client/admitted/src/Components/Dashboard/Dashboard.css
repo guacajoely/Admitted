@@ -12,27 +12,25 @@ body{
 
 .admission-details{
     margin-bottom: 1rem;
+    padding: .5rem;
 }
 
-.people-section, .events-section{
+.admission-buttons{
+    margin: 1rem 0;
+}
+
+.people-section, .medication-section, .events-section, .questions-section{
+    padding: 1rem;
+    margin: 3px;
     background-color: aliceblue;
 }
 
-.medication-section{
+table {
     background-color: white;
-}
-
-.people-section, .medication-section, .events-section{
-    padding: 1rem;
-    margin: 3px;
 }
 
 table{
     text-align: center;
-}
-
-th:last-of-type, td:last-of-type{
-    border: 0;
 }
 
 th, td{
@@ -40,8 +38,12 @@ th, td{
     padding: 10px;
 }
 
+th:last-of-type, td:last-of-type{
+    border: 0;
+    background-color: aliceblue;
+}
 
-
-
-
-
+.button-column{
+    max-height: 30px;
+    display: flex;
+}

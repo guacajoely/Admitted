@@ -1,13 +1,11 @@
 import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { deleteMedication, getMedList } from "../../Managers/MedicationManager.js";
 
 export const MedicationList = ({ admissionId }) => {
 
     const [medList, setMedList] = useState([]);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getMedList(admissionId)
@@ -24,9 +22,7 @@ export const MedicationList = ({ admissionId }) => {
         if (results) {
             deleteMedication(parsedId)
                 .then(getMedList(admissionId))
-                .then(navigate(`/`))
-                window.location.reload()
-
+                .then((meds) => setMedList(meds));
         };
     };
 
@@ -34,7 +30,7 @@ export const MedicationList = ({ admissionId }) => {
     return (
         
         <div className="medication-section">
-            <h1>Medication <Button className="btn-sm m-1" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
+            <h1>Medication <Button className="btn-sm m-1" color="primary" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
 
             
 

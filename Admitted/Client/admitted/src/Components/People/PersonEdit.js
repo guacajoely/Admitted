@@ -5,7 +5,7 @@ import { Button, FormGroup, Input, Label } from "reactstrap"
 
 export const PersonEdit = () => {
 
-    const [editedPerson, seteditedPerson] = useState({
+    const [editedPerson, setEditedPerson] = useState({
         staffName: "",
         staffTitle: ""
     })
@@ -16,7 +16,7 @@ export const PersonEdit = () => {
 
     useEffect(() => {
         getPersonById(personId).then((res) => {
-            seteditedPerson(res)
+            setEditedPerson(res)
         }
         );
     }, [personId])
@@ -55,7 +55,7 @@ export const PersonEdit = () => {
                             (event) => {
                                 const copy = { ...editedPerson }
                                 copy.staffName = event.target.value
-                                seteditedPerson(copy)
+                                setEditedPerson(copy)
                             }
                         } />
                 </FormGroup>
@@ -71,7 +71,7 @@ export const PersonEdit = () => {
                             (event) => {
                                 const copy = { ...editedPerson }
                                 copy.staffTitle = event.target.value
-                                seteditedPerson(copy)
+                                setEditedPerson(copy)
                             }
                         } />
                 </FormGroup>

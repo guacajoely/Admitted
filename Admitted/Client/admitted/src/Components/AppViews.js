@@ -9,6 +9,8 @@ import { MedicationForm } from "./Medication/MedicationForm.js";
 import { MedicationEdit } from "./Medication/MedicationEdit.js";
 import { EventForm } from "./Events/EventForm.js";
 import { EventEdit } from "./Events/EventEdit.js";
+import { QuestionForm } from "./Questions/QuestionForm.js";
+import { QuestionEdit } from "./Questions/QuestionEdit.js";
 
 export default function ApplicationViews() {
 
@@ -23,6 +25,8 @@ export default function ApplicationViews() {
         <Route path="/medication/edit/:medId" element={<MedicationEdit />} />
         <Route path="/events/create/:admissionId" element={<EventForm />} />
         <Route path="/events/edit/:eventId" element={<EventEdit />} />
+        <Route path="/questions/create/:admissionId" element={<QuestionForm />} />
+        <Route path="/questions/edit/:questionId" element={<QuestionEdit />} />
       </Routes>
    );
  

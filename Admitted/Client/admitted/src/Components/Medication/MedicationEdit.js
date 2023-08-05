@@ -5,7 +5,7 @@ import { editMedication, getMedicationById } from "../../Managers/MedicationMana
 
 export const MedicationEdit = () => {
 
-    const [editedMed, seteditedMed] = useState({
+    const [editedMed, setEditedMed] = useState({
         medicationName: "",
         purpose: "",
         frequencyHours: null
@@ -17,7 +17,7 @@ export const MedicationEdit = () => {
 
     useEffect(() => {
         getMedicationById(medId).then((res) => {
-            seteditedMed(res)
+            setEditedMed(res)
         }
         );
     }, [medId])
@@ -57,7 +57,7 @@ export const MedicationEdit = () => {
                             (event) => {
                                 const copy = { ...editedMed }
                                 copy.medicationName = event.target.value
-                                seteditedMed(copy)
+                                setEditedMed(copy)
                             }
                         } />
                 </FormGroup>
@@ -73,7 +73,7 @@ export const MedicationEdit = () => {
                             (event) => {
                                 const copy = { ...editedMed }
                                 copy.purpose = event.target.value
-                                seteditedMed(copy)
+                                setEditedMed(copy)
                             }
                         } />
                 </FormGroup>
@@ -89,7 +89,7 @@ export const MedicationEdit = () => {
                             (event) => {
                                 const copy = { ...editedMed }
                                 copy.frequencyHours = event.target.value
-                                seteditedMed(copy)
+                                setEditedMed(copy)
                             }
                         } />
                 </FormGroup>

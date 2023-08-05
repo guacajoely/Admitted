@@ -1,13 +1,11 @@
 import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { deleteEvent, getEventList } from "../../Managers/EventsManager.js";
 
 export const EventList = ({ admissionId }) => {
 
     const [eventList, setEventList] = useState([]);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getEventList(admissionId)
@@ -23,16 +21,14 @@ export const EventList = ({ admissionId }) => {
         if (results) {
             deleteEvent(parsedId)
                 .then(getEventList(admissionId))
-                .then(navigate(`/`))
-                window.location.reload()
-
+                .then((events) => setEventList(events))
         };
     };
 
     return (
         
         <div className="events-section">
-            <h1>Events <Button className="btn-sm m-1" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
+            <h1>Events <Button className="btn-sm m-1" color="primary" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
 
             <table className="events-table">
                 <thead>
