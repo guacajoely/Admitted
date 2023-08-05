@@ -5,6 +5,8 @@ import { AdmissionForm } from "./Admission/AdmissionForm.js";
 import { AdmissionEdit } from "./Admission/AdmissionEdit.js";
 import { PersonForm } from "./People/PersonForm.js";
 import { PersonEdit } from "./People/PersonEdit.js";
+import { MedicationForm } from "./Medication/MedicationForm.js";
+import { MedicationEdit } from "./Medication/MedicationEdit.js";
 
 export default function ApplicationViews() {
 
@@ -15,6 +17,8 @@ export default function ApplicationViews() {
         <Route path="/admission/edit" element={<AdmissionEdit />} />
         <Route path="/people/create/:admissionId" element={<PersonForm />} />
         <Route path="/people/edit/:personId" element={<PersonEdit />} />
+        <Route path="/medication/create/:admissionId" element={<MedicationForm />} />
+        <Route path="/medication/edit/:medId" element={<MedicationEdit />} />
       </Routes>
    );
  

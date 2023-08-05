@@ -47,7 +47,7 @@ export const PersonEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="staffName">Name:</Label>
                     <Input
-                        className="admission-input"
+                        className="person-input"
                         type="text"
                         id="staffName"
                         value={editedPerson.staffName}
@@ -63,7 +63,7 @@ export const PersonEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="staffTitle">Title:</Label>
                     <Input
-                        className="admission-input"
+                        className="person-input"
                         type="text"
                         id="staffTitle"
                         value={editedPerson.staffTitle}

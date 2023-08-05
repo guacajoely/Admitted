@@ -3,6 +3,7 @@ import { Container, Button } from "reactstrap"
 import { useState, useEffect } from "react";
 import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
 import { PeopleList } from "../People/PeopleList.js";
+import { MedicationList } from "../Medication/MedicationList.js";
 
 export const Admission = ({ userId }) => {
 
@@ -76,6 +77,7 @@ export const Admission = ({ userId }) => {
         </Container>
         <Container>
             <PeopleList admissionId={admission.id} />
+            <MedicationList admissionId={admission.id} />
         </Container>
         </>
 
@@ -83,8 +85,8 @@ export const Admission = ({ userId }) => {
         :
         <>
         <Container>
-        <div className="m-5">According to our records, you aren't currently admitted.</div>
-        <Button tag={Link} to="/admission/create">Create a Hospital Stay</Button>
+            <div className="m-5">According to our records, you aren't currently admitted.</div>
+            <Button tag={Link} to="/admission/create">Create a Hospital Stay</Button>
         </Container>
         </>
     )

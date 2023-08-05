@@ -39,9 +39,9 @@ export const PeopleList = ({ admissionId }) => {
             <table className="people-table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Title</th>
-                        <th>Date Met</th>
+                        <th style={{width: "25%"}}>Name</th>
+                        <th style={{width: "25%"}}>Title</th>
+                        <th style={{width: "25%"}}>Date Met</th>
                     </tr>
                 </thead>
 

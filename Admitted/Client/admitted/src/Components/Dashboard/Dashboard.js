@@ -8,13 +8,8 @@ export default function Dashboard() {
   const UserObject = JSON.parse(localUser);
 
   return (
-    <>
-    
+    <>  
     {<Admission userId={UserObject.id} />}
-    
     </>
-
-
-
   );
 }
