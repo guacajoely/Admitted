@@ -10,6 +10,8 @@ export const MedicationForm = () => {
     const {admissionId} = useParams();
 
     const currentDate = new Date();
+    currentDate.setSeconds(0)
+    currentDate.setMilliseconds(0);
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 

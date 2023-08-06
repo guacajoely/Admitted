@@ -46,8 +46,19 @@ export const QuestionList = ({ admissionId }) => {
 
                     {questionList.map((question) => {
 
-                        const formattedQuestionDate = new Date(question.questionDateTime).toLocaleDateString();
-                        const formattedAnswerDate = new Date(question.answerDateTime).toLocaleDateString();
+                        const formattedQuestionDate = new Date(question.questionDateTime).toLocaleString(undefined, {
+                            month:  'short',
+                            day:    'numeric',
+                            hour:   '2-digit',
+                            minute: '2-digit',
+                        });
+                        
+                        const formattedAnswerDate = new Date(question.answerDateTime).toLocaleString(undefined, {
+                            month:  'short',
+                            day:    'numeric',
+                            hour:   '2-digit',
+                            minute: '2-digit',
+                        });
 
                         return (
                             <tr key={question.id}>

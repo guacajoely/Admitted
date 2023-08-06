@@ -12,6 +12,7 @@ import { EventEdit } from "./Events/EventEdit.js";
 import { QuestionForm } from "./Questions/QuestionForm.js";
 import { QuestionEdit } from "./Questions/QuestionEdit.js";
 import { MedDoseList } from "./MedDose/MedDoseList.js";
+import { MedDoseEdit } from "./MedDose/MedDoseEdit.js";
 
 export default function ApplicationViews() {
 
@@ -29,6 +30,7 @@ export default function ApplicationViews() {
         <Route path="/questions/create/:admissionId" element={<QuestionForm />} />
         <Route path="/questions/edit/:questionId" element={<QuestionEdit />} />
         <Route path="/medDose/:medId" element={<MedDoseList />} />
+        <Route path="/medDose/edit/:doseId" element={<MedDoseEdit />} />
       </Routes>
    );
  

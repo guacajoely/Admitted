@@ -44,13 +44,16 @@ export const PeopleList = ({ admissionId }) => {
 
                     {peopleList.map((person) => {
 
-                        const formattedDate = new Date(person.meetDateTime).toLocaleDateString();
+                        const formattedDateTime = new Date(person.meetDateTime).toLocaleString(undefined, {
+                            month:  'long',
+                            day:    'numeric'
+                        });
 
                         return (
                             <tr key={person.id}>
                                 <td>{person.staffName}</td>
                                 <td>{person.staffTitle}</td>
-                                <td>{formattedDate}</td>
+                                <td>{formattedDateTime}</td>
                                 <td classname="button-column">
                                     <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
                                     <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>

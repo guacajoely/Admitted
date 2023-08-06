@@ -44,7 +44,12 @@ export const EventList = ({ admissionId }) => {
 
                     {eventList.map((event) => {
 
-                        const formattedDate = new Date(event.eventDateTime).toLocaleDateString();
+                        const formattedDate = new Date(event.eventDateTime).toLocaleString(undefined, {
+                            month:  'short',
+                            day:    'numeric',
+                            hour:   '2-digit',
+                            minute: '2-digit',
+                        });
 
                         return (
                             <tr key={event.id}>

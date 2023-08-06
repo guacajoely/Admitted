@@ -13,7 +13,9 @@ export const MedDoseList = () => {
 
     const navigate = useNavigate();
 
-    const currentDate = new Date();
+    const currentDate = new Date()
+    currentDate.setSeconds(0)
+    currentDate.setMilliseconds(0);
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 
@@ -40,8 +42,9 @@ export const MedDoseList = () => {
 
             addMedDose(doseToSendToAPI)
                 .then(getMedDoseList(medId))
-                .then((meds) => setMedDoseList(meds))
-                .then(navigate(`/medDose/${medId}`))
+                // .then((meds) => setMedDoseList(meds))
+                // .then(navigate(`/medDose/${medId}`))
+                .then(window.location.reload())
                 
         };
     };
@@ -58,6 +61,8 @@ export const MedDoseList = () => {
                 .then((meds) => setMedDoseList(meds));
         };
     };
+
+    
 
     return (
         
@@ -76,7 +81,12 @@ export const MedDoseList = () => {
 
                     {medDoseList.map((dose) => {
 
-                        const formattedDateTime = new Date(dose.doseDateTime).toLocaleDateString();
+                        const formattedDateTime = new Date(dose.doseDateTime).toLocaleString(undefined, {
+                            month:  'short',
+                            day:    'numeric',
+                            hour:   '2-digit',
+                            minute: '2-digit',
+                        });
 
                         return (
                             <tr key={dose.id}>

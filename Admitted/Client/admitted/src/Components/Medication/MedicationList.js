@@ -49,7 +49,10 @@ export const MedicationList = ({ admissionId }) => {
 
                     {medList.map((med) => {
 
-                        const formattedDate = new Date(med.prescribeDateTime).toLocaleDateString();
+                        const formattedDate = new Date(med.prescribeDateTime).toLocaleString(undefined, {
+                            month:  'long',
+                            day:    'numeric'
+                        });
 
                         return (
                             <tr key={med.id}>
