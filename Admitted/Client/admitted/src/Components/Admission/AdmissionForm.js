@@ -51,13 +51,14 @@ export const AdmissionForm = () => {
     
 
     return (
-        <form className="admission-form">
+        <form className="admission-form form">
             <h2 className="admission-form-title">Create a New Stay</h2>
+            <h5>Note: If something is unknown, just leave the input field blank.</h5>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="reason">Reason:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input med-text-input input"
                         type="text"
                         id="reason"
                         value={newAdmission.reason}
@@ -73,7 +74,7 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="hospitalName">Hospital Name:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input med-text-input input"
                         type="text"
                         id="hospitalName"
                         value={newAdmission.hospitalName}
@@ -89,7 +90,7 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="roomNum">Room #:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input number-input"
                         type="number"
                         id="roomNum"
                         value={newAdmission.roomNum}
@@ -105,8 +106,8 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="roomPhoneNum">Room Phone #:</Label>
                     <Input
-                        className="admission-input"
-                        type="text"
+                        className="admission-input phone-input input"
+                        type="tel"
                         id="roomPhoneNum"
                         value={newAdmission.roomPhoneNum}
                         onChange={
@@ -121,8 +122,8 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="nurseChangeTime">Is there a specific time nurses change shifts every day?</Label>
                     <Input
-                        className="admission-input"
-                        type="number"
+                        className="admission-input time-input"
+                        type="time"
                         id="nurseChangeTime"
                         value={newAdmission.nurseChangeTime}
                         onChange={
@@ -137,8 +138,8 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="doctorMeetTime">Is there a specific time you can expect to speak to your doctor/s daily?</Label>
                     <Input
-                        className="admission-input"
-                        type="number"
+                        className="admission-input time-input"
+                        type="time"
                         id="doctorMeetTime"
                         value={newAdmission.doctorMeetTime}
                         onChange={
@@ -153,7 +154,7 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="estimatedStayDays">Estimated Stay Length (days)</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input number-input"
                         type="number"
                         id="estimatedStayDays"
                         value={newAdmission.estimatedStayDays}

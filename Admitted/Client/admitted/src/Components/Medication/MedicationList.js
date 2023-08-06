@@ -32,7 +32,7 @@ export const MedicationList = ({ admissionId }) => {
         <div className="medication-section">
             <h1>Medication <Button className="btn-sm m-1" color="primary" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
 
-            
+            {medList.length > 0 ?
 
             <table className="medication-table">
                 <thead>
@@ -71,6 +71,10 @@ export const MedicationList = ({ admissionId }) => {
 
                 </tbody>
             </table>
+
+            : <></>
+        }
+        
         </div>
     )
 }

@@ -28,26 +28,26 @@ export default function Register({setIsLoggedIn}) {
  };
 
   return (
-    <Form onSubmit={registerClick}>
+    <Form className="form" onSubmit={registerClick}>
       <fieldset>
         <FormGroup>
           <Label htmlFor="fullName">Full Name</Label>
-          <Input id="fullName" type="text" onChange={e => setFullName(e.target.value)} />
+          <Input className="input" id="fullName" type="text" onChange={e => setFullName(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+          <Input className="input" id="email" type="text" onChange={e => setEmail(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+          <Input className="input" id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="confirmPassword">Confirm Password</Label>
-          <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+          <Input className="input" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
         </FormGroup>
 
         <FormGroup>

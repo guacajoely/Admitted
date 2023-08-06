@@ -31,6 +31,8 @@ export const QuestionList = ({ admissionId }) => {
         <div className="questions-section">
             <h1>Questions <Button className="btn-sm m-1" color="primary" tag={Link} to={`/questions/create/${admissionId}`}>Add a Question</Button></h1>
 
+            {questionList.length > 0 ?
+
             <table className="questions-table">
                 <thead>
                     <tr>
@@ -52,7 +54,7 @@ export const QuestionList = ({ admissionId }) => {
                             hour:   '2-digit',
                             minute: '2-digit',
                         });
-                        
+
                         const formattedAnswerDate = new Date(question.answerDateTime).toLocaleString(undefined, {
                             month:  'short',
                             day:    'numeric',
@@ -77,6 +79,11 @@ export const QuestionList = ({ admissionId }) => {
 
                 </tbody>
             </table>
+
+
+            :<></>
+            }
+            
         </div>
     )
 }

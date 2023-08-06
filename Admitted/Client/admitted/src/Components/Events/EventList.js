@@ -30,6 +30,9 @@ export const EventList = ({ admissionId }) => {
         <div className="events-section">
             <h1>Events <Button className="btn-sm m-1" color="primary" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
 
+
+            {eventList.length > 0 ?
+
             <table className="events-table">
                 <thead>
                     <tr>
@@ -66,6 +69,11 @@ export const EventList = ({ admissionId }) => {
 
                 </tbody>
             </table>
+
+
+            :<></>
+            }
+            
         </div>
     )
 }

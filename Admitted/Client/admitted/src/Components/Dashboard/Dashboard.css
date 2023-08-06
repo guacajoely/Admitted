@@ -47,3 +47,28 @@ th:last-of-type, td:last-of-type{
     max-height: 30px;
     display: flex;
 }
+
+.form {
+    margin: 5rem;
+}
+
+.input {
+    min-width: 10rem;
+}
+
+.number-input{
+    width: 5rem;
+}
+
+.time-input{
+    width: 10rem;
+}
+
+.phone-input{
+    width: 10rem;
+}
+
+.med-text-input{
+    max-width: 40rem;
+}
+
