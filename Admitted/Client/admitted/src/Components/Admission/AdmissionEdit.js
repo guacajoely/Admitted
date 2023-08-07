@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
 
@@ -57,13 +57,14 @@ export const AdmissionEdit = () => {
 
     return (
 
-        <form className="admission-form">
+        <form className="admission-form form">
             <h2 className="admission-form-title">Edit your stay details</h2>
+            <h5>Note: If something is unknown, leave the input field blank.</h5>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="reason">Reason:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input med-text-input input"
                         type="text"
                         id="reason"
                         value={editedAdmission.reason}
@@ -79,7 +80,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="hospitalName">Hospital Name:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input med-text-input input"
                         type="text"
                         id="hospitalName"
                         value={editedAdmission.hospitalName}
@@ -95,7 +96,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="roomNum">Room #:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input number-input"
                         type="number"
                         id="roomNum"
                         value={editedAdmission.roomNum}
@@ -111,7 +112,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="roomPhoneNum">Room Phone #:</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input phone-input input"
                         type="text"
                         id="roomPhoneNum"
                         value={editedAdmission.roomPhoneNum}
@@ -127,7 +128,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="nurseChangeTime">Is there a specific time nurses change shifts every day?</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input time-input"
                         type="time"
                         id="nurseChangeTime"
                         value={editedAdmission.nurseChangeTime}
@@ -143,7 +144,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="doctorMeetTime">Is there a specific time you can expect to speak to your doctor/s daily?</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input time-input"
                         type="time"
                         id="doctorMeetTime"
                         value={editedAdmission.doctorMeetTime}
@@ -159,7 +160,7 @@ export const AdmissionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="estimatedStayDays">Estimated Stay Length (days)</Label>
                     <Input
-                        className="admission-input"
+                        className="admission-input number-input"
                         type="number"
                         id="estimatedStayDays"
                         value={editedAdmission.estimatedStayDays}
@@ -174,6 +175,7 @@ export const AdmissionEdit = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Details</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     );
 }

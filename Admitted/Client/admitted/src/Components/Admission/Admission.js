@@ -73,11 +73,11 @@ export const Admission = ({ userId }) => {
                     <div className="admission-prop"><strong>Hospital: </strong><span className="detail">{admission.hospitalName}</span></div>
                     <div className="admission-prop"><strong>Reason: </strong><span className="detail">{admission.reason}</span></div>
                     <div className="admission-prop"><strong>Room #: </strong><span className="detail">{admission.roomNum}</span></div>
-                    <div className="admission-prop"><strong>Room Phone #: </strong><span className="detail">{admission.roomPhoneNum}</span></div>
+                    <div className="admission-prop"><strong>Room Phone #: </strong><span className="detail">{admission.roomPhoneNum ? admission.roomPhoneNum : "N/A" }</span></div>
                     <div className="admission-prop"><strong>Admission Date: </strong><span className="detail">{formattedDate}</span></div>
-                    <div className="admission-prop"><strong>Estimated Stay Length: </strong><span className="detail">{admission.estimatedStayDays} (days)</span></div>
-                    <div className="admission-prop"><strong>Nurse Shift Change: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.nurseChangeTime) : "n/a"}</span></div>
-                    <div className="admission-prop"><strong>Daily Doctor Meeting: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.doctorMeetTime) : "n/a"}</span></div>
+                    <div className="admission-prop"><strong>Estimated Stay Length: </strong><span className="detail">{ admission.estimatedStayDays ? admission.estimatedStayDays + " (days)" : "N/A"}</span></div>
+                    <div className="admission-prop"><strong>Nurse Shift Change: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.nurseChangeTime) : "N/A"}</span></div>
+                    <div className="admission-prop"><strong>Daily Doctor Meeting: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.doctorMeetTime) : "N/A"}</span></div>
                 </div>
                 <div className="admission-buttons">
                     <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>

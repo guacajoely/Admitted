@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { editPerson, getPersonById } from "../../Managers/PeopleManager.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 
 export const PersonEdit = () => {
@@ -95,6 +95,7 @@ export const PersonEdit = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Person</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 

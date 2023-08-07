@@ -53,12 +53,12 @@ export const AdmissionForm = () => {
     return (
         <form className="admission-form form">
             <h2 className="admission-form-title">Create a New Stay</h2>
-            <h5>Note: If something is unknown, just leave the input field blank.</h5>
+            <h5>Note: If something is unknown, leave the input field blank.</h5>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="reason">Reason:</Label>
                     <Input
-                        className="admission-input med-text-input input"
+                        className="admission-input med-text-input"
                         type="text"
                         id="reason"
                         value={newAdmission.reason}
@@ -74,7 +74,7 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="hospitalName">Hospital Name:</Label>
                     <Input
-                        className="admission-input med-text-input input"
+                        className="admission-input med-text-input"
                         type="text"
                         id="hospitalName"
                         value={newAdmission.hospitalName}
@@ -106,7 +106,7 @@ export const AdmissionForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="roomPhoneNum">Room Phone #:</Label>
                     <Input
-                        className="admission-input phone-input input"
+                        className="admission-input phone-input"
                         type="tel"
                         id="roomPhoneNum"
                         value={newAdmission.roomPhoneNum}

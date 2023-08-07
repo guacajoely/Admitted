@@ -60,12 +60,8 @@ th:last-of-type, td:last-of-type{
     margin: 5rem;
 }
 
-.input {
-    min-width: 10rem;
-}
-
 .number-input{
-    width: 5rem;
+    width: 6rem;
 }
 
 .time-input{
@@ -78,5 +74,6 @@ th:last-of-type, td:last-of-type{
 
 .med-text-input{
     max-width: 40rem;
+    min-width: 10rem;
 }
 
