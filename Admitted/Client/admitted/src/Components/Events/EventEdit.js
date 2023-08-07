@@ -43,13 +43,13 @@ export const EventEdit = () => {
 
 
     return (
-        <form className="event-form">
+        <form className="event-form form">
             <h2 className="event-form-title">Edit Event</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="eventName">Event Description:</Label>
                     <Input
-                        className="event-input"
+                        className="event-input med-text-input"
                         type="text"
                         id="eventName"
                         value={editedEvent.eventName}
@@ -65,7 +65,7 @@ export const EventEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="eventType">Type of event:</Label>
                     <Input
-                        className="event-input"
+                        className="event-input med-text-input"
                         type="text"
                         id="eventType"
                         value={editedEvent.eventType}
@@ -81,7 +81,7 @@ export const EventEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="eventDateTime">Date and Time:</Label>
                     <Input
-                        className="event-input"
+                        className="event-input datetime-input"
                         type="datetime-local"
                         id="eventDateTime"
                         value={editedEvent.eventDateTime}

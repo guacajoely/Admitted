@@ -44,13 +44,13 @@ export const MedicationEdit = () => {
 
 
     return (
-        <form className="medication-form">
+        <form className="medication-form form">
             <h2 className="medication-form-title">Edit Medication</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="medicationName">Name:</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input med-text-input"
                         type="text"
                         id="medicationName"
                         value={editedMed.medicationName}
@@ -66,7 +66,7 @@ export const MedicationEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="purpose">Purpose:</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input med-text-input"
                         type="text"
                         id="purpose"
                         value={editedMed.purpose}
@@ -82,7 +82,7 @@ export const MedicationEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="frequencyHours">Dose Frequency (hours):</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input number-input"
                         type="number"
                         id="frequencyHours"
                         value={editedMed.frequencyHours}
@@ -99,7 +99,7 @@ export const MedicationEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="prescribeDateTime">Prescribed Date:</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input datetime-input"
                         type="datetime-local"
                         id="prescribeDateTime"
                         value={editedMed.prescribeDateTime}

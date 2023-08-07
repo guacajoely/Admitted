@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { addEvent } from "../../Managers/EventsManager.js";
 
@@ -37,13 +37,13 @@ export const EventForm = () => {
     };
 
     return (
-        <form className="event-form">
+        <form className="event-form form">
             <h2 className="event-form-title">Add an Event</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="eventName">Event Description:</Label>
                     <Input
-                        className="event-input"
+                        className="event-input med-text-input"
                         type="text"
                         id="eventName"
                         value={newEvent.eventName}
@@ -59,7 +59,7 @@ export const EventForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="eventType">Type of event:</Label>
                     <Input
-                        className="event-input"
+                        className="event-input med-text-input"
                         type="text"
                         id="eventType"
                         value={newEvent.eventType}
@@ -76,6 +76,7 @@ export const EventForm = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save New Event</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 

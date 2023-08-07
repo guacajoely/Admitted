@@ -48,13 +48,13 @@ export const QuestionEdit = () => {
 
 
     return (
-        <form className="question-form">
+        <form className="question-form form">
             <h2 className="question-form-title">Edit/Answer Question</h2>
 
             <FormGroup className="form-group">
                     <Label htmlFor="questionDateTime">Question Date/Time:</Label>
                     <Input
-                        className="question-input"
+                        className="question-input datetime-input"
                         type="datetime-local"
                         id="questionDateTime"
                         value={editedQuestion.questionDateTime}
@@ -70,7 +70,7 @@ export const QuestionEdit = () => {
             <FormGroup className="form-group">
                     <Label htmlFor="questionText">Question:</Label>
                     <Input
-                        className="question-input"
+                        className="question-input med-text-input"
                         type="textarea"
                         id="questionText"
                         value={editedQuestion.questionText}
@@ -86,7 +86,7 @@ export const QuestionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="answerDateTime">Response Date/Time:</Label>
                     <Input
-                        className="question-input"
+                        className="question-input datetime-input"
                         type="datetime-local"
                         id="answerDateTime"
                         value={editedQuestion.answerDateTime}
@@ -102,7 +102,7 @@ export const QuestionEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="answerText">Response:</Label>
                     <Input
-                        className="question-input"
+                        className="question-input med-text-input"
                         type="textarea"
                         id="answerText"
                         value={editedQuestion.answerText}

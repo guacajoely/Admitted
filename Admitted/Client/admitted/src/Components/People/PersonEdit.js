@@ -42,13 +42,13 @@ export const PersonEdit = () => {
 
 
     return (
-        <form className="person-form">
+        <form className="person-form form">
             <h2 className="person-form-title">Edit Person</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="staffName">Name:</Label>
                     <Input
-                        className="person-input"
+                        className="person-input med-text-input"
                         type="text"
                         id="staffName"
                         value={editedPerson.staffName}
@@ -64,7 +64,7 @@ export const PersonEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="staffTitle">Title:</Label>
                     <Input
-                        className="person-input"
+                        className="person-input med-text-input"
                         type="text"
                         id="staffTitle"
                         value={editedPerson.staffTitle}
@@ -80,7 +80,7 @@ export const PersonEdit = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="meetDateTime">Date Met:</Label>
                     <Input
-                        className="person-input"
+                        className="person-input datetime-input"
                         type="datetime-local"
                         id="meetDateTime"
                         value={editedPerson.meetDateTime}

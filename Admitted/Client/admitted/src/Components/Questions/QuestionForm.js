@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { addQuestion } from "../../Managers/QuestionsManager.js";
 
@@ -37,13 +37,13 @@ export const QuestionForm = () => {
     };
 
     return (
-        <form className="question-form">
+        <form className="question-form form">
             <h2 className="question-form-title">Add a Question</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="questionText">Question:</Label>
                     <Input
-                        className="question-input"
+                        className="question-input med-text-input"
                         type="textarea"
                         id="questionText"
                         value={newQuestion.questionText}
@@ -58,6 +58,7 @@ export const QuestionForm = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save New Question</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 

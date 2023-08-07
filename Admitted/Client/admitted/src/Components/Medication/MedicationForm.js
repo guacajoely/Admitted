@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { addMedication } from "../../Managers/MedicationManager.js";
 
@@ -39,13 +39,13 @@ export const MedicationForm = () => {
     };
 
     return (
-        <form className="medication-form">
+        <form className="medication-form form">
             <h2 className="medication-form-title">Add a Medication</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="medicationName">Name:</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input med-text-input"
                         type="text"
                         id="medicationName"
                         value={newMed.medicationName}
@@ -61,7 +61,7 @@ export const MedicationForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="purpose">Purpose:</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input med-text-input"
                         type="text"
                         id="purpose"
                         value={newMed.purpose}
@@ -77,7 +77,7 @@ export const MedicationForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="frequencyHours">Dose Frequency (hours):</Label>
                     <Input
-                        className="medication-input"
+                        className="medication-input number-input"
                         type="number"
                         id="frequencyHours"
                         value={newMed.frequencyHours}
@@ -94,6 +94,7 @@ export const MedicationForm = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save New Medication</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 

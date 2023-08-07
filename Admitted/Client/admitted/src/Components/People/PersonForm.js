@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addPerson } from "../../Managers/PeopleManager.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 
 export const PersonForm = () => {
@@ -37,13 +37,13 @@ export const PersonForm = () => {
     };
 
     return (
-        <form className="person-form">
+        <form className="person-form form">
             <h2 className="person-form-title">Add a Person</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="staffName">Name:</Label>
                     <Input
-                        className="person-input"
+                        className="person-input med-text-input"
                         type="text"
                         id="staffName"
                         value={newPerson.staffName}
@@ -59,7 +59,7 @@ export const PersonForm = () => {
                 <FormGroup className="form-group">
                     <Label htmlFor="staffTitle">Title:</Label>
                     <Input
-                        className="person-input"
+                        className="person-input med-text-input"
                         type="text"
                         id="staffTitle"
                         value={newPerson.staffTitle}
@@ -74,6 +74,7 @@ export const PersonForm = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save New Person</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 

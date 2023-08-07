@@ -32,7 +32,7 @@ body{
     margin: 1rem 0;
 }
 
-.people-section, .medication-section, .events-section, .questions-section{
+.people-section, .medication-section, .events-section, .questions-section, .dose-section{
     padding: 1rem;
     margin: 4px;
     background-color: aliceblue;
@@ -75,5 +75,9 @@ th:last-of-type, td:last-of-type{
 .med-text-input{
     max-width: 40rem;
     min-width: 10rem;
+}
+
+.datetime-input{
+    width:15rem;
 }
 

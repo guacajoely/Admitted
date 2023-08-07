@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { addAdmission } from "../../Managers/AdmissionManager.js"
 
@@ -169,6 +169,7 @@ export const AdmissionForm = () => {
 
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Admission</Button>
+                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 }   

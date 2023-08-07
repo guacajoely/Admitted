@@ -61,13 +61,13 @@ export const MedDoseList = () => {
 
     return (
 
-        <div className="med-doses-section">
+        <div className="dose-section">
             <h1>Doses of {medication.medicationName} <Button className="btn-sm m-1" color="primary" onClick={handleAddButton}>Add a Dose</Button></h1>
 
-            <table className="med-doses-table">
+            <table className="dose-table">
                 <thead>
                     <tr>
-                        <th style={{ width: "25%" }}>Date</th>
+                        <th>Date</th>
                         <th className="button-column"></th>
                     </tr>
                 </thead>

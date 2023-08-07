@@ -37,13 +37,13 @@ export const MedDoseEdit = () => {
     }
 
     return (
-        <form className="dose-form">
+        <form className="dose-form form">
             <h2 className="dose-form-title">Edit Dose</h2>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="doseDateTime">Dose Date & Time</Label>
                     <Input
-                        className="event-input"
+                        className="event-input datetime-input"
                         type="datetime-local"
                         id="doseDateTime"
                         value={editedDose.doseDateTime}
