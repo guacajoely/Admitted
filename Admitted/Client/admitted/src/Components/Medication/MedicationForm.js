@@ -18,7 +18,7 @@ export const MedicationForm = () => {
     const [newMed, updateNewMed] = useState({
         medicationName: "",
         purpose: "",
-        frequencyHours: null
+        frequencyHours: undefined
     })
 
     const handleSaveButtonClick = (e) => {

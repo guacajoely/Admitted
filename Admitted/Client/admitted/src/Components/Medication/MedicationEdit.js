@@ -8,7 +8,7 @@ export const MedicationEdit = () => {
     const [editedMed, setEditedMed] = useState({
         medicationName: "",
         purpose: "",
-        frequencyHours: null,
+        frequencyHours: "",
         prescribeDateTime: ""
     })
 
