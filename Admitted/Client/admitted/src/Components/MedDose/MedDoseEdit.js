@@ -6,7 +6,7 @@ import { editMedDose, getMedDoseById } from "../../Managers/MedDoseManager.js";
 export const MedDoseEdit = () => {
 
     const [editedDose, setEditedDose] = useState({
-        doseDateTime: null
+        doseDateTime: ""
     })
 
     const {doseId} = useParams();
@@ -36,15 +36,6 @@ export const MedDoseEdit = () => {
             })
     }
 
-    const copy = new Date(editedDose.doseDateTime);
-    const formattedDateTime = copy.toLocaleString(undefined, {
-        month:  'short',
-        day:    'numeric',
-        hour:   '2-digit',
-        minute: '2-digit',
-    });
-
-
     return (
         <form className="dose-form">
             <h2 className="dose-form-title">Edit Dose</h2>
@@ -65,13 +56,9 @@ export const MedDoseEdit = () => {
                         } />
                 </FormGroup>
 
-
-
-
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Dose</Button>
         </form>
     )
-
 
 }

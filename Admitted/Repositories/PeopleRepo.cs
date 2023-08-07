@@ -115,12 +115,14 @@ namespace Admitted.Repositories
                         UPDATE People
                         SET
                             [StaffName] = @StaffName,
-                            [StaffTitle] = @StaffTitle
+                            [StaffTitle] = @StaffTitle,
+                            [MeetDateTime] = @MeetDateTime
                         WHERE Id = @Id
                         ";
                     cmd.Parameters.AddWithValue("@Id", person.Id);
                     cmd.Parameters.AddWithValue("@StaffName", person.StaffName);
                     cmd.Parameters.AddWithValue("@StaffTitle", DbUtils.ValueOrDBNull(person.StaffTitle));
+                    cmd.Parameters.AddWithValue("@MeetDateTime", person.MeetDateTime);
 
                     cmd.ExecuteNonQuery();
                 }

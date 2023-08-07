@@ -26,11 +26,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <ahref aria-current="page" className="nav-link"
-                                        style={{ cursor: "pointer" }} onClick={() => {
+                                        <NavLink tag={RRNavLink} onClick={() => {
                                             logout()
                                             setIsLoggedIn(false)
-                                        }}>Logout</ahref>
+                                        }}>Logout</NavLink>
                                 </NavItem>
                             </>
                         }

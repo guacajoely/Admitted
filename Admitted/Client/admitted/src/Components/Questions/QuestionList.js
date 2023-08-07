@@ -40,7 +40,7 @@ export const QuestionList = ({ admissionId }) => {
                         <th style={{width: "20%"}}>Question</th>
                         <th style={{width: "10%"}}>Date</th>
                         <th style={{width: "20%"}}>Response</th>
-                        <th style={{width: "10%"}} classname="button-column"></th>
+                        <th style={{width: "10%"}} className="button-column"></th>
                     </tr>
                 </thead>
 
@@ -66,10 +66,10 @@ export const QuestionList = ({ admissionId }) => {
                             <tr key={question.id}>
                                 <td>{formattedQuestionDate}</td>
                                 <td>{question.questionText}</td>
-                                <td>{formattedAnswerDate ? formattedAnswerDate : "No Response"}</td>
-                                <td>{question.answerText}</td>
+                                <td>{question.answerDateTime ? formattedAnswerDate : "N/A"}</td>
+                                <td>{question.answerText ? question.answerText : "NO RESPONSE RECORDED"}</td>
                                 
-                                <td classname="button-column">
+                                <td className="button-column">
                                     <Button className="btn-sm m-1" tag={Link} to={`/questions/edit/${question.id}`} color="secondary">Edit</Button>
                                     <Button id={`question--${question.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                 </td>

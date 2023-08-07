@@ -7,7 +7,8 @@ export const PersonEdit = () => {
 
     const [editedPerson, setEditedPerson] = useState({
         staffName: "",
-        staffTitle: ""
+        staffTitle: "",
+        meetDateTime: ""
     })
 
     const {personId} = useParams();
@@ -71,6 +72,22 @@ export const PersonEdit = () => {
                             (event) => {
                                 const copy = { ...editedPerson }
                                 copy.staffTitle = event.target.value
+                                setEditedPerson(copy)
+                            }
+                        } />
+                </FormGroup>
+
+                <FormGroup className="form-group">
+                    <Label htmlFor="meetDateTime">Date Met:</Label>
+                    <Input
+                        className="person-input"
+                        type="datetime-local"
+                        id="meetDateTime"
+                        value={editedPerson.meetDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedPerson }
+                                copy.meetDateTime = event.target.value
                                 setEditedPerson(copy)
                             }
                         } />

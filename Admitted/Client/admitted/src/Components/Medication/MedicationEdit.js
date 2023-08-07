@@ -8,7 +8,8 @@ export const MedicationEdit = () => {
     const [editedMed, setEditedMed] = useState({
         medicationName: "",
         purpose: "",
-        frequencyHours: null
+        frequencyHours: null,
+        prescribeDateTime: ""
     })
 
     const {medId} = useParams();
@@ -89,6 +90,23 @@ export const MedicationEdit = () => {
                             (event) => {
                                 const copy = { ...editedMed }
                                 copy.frequencyHours = event.target.value
+                                setEditedMed(copy)
+                            }
+                        } />
+                </FormGroup>
+
+
+                <FormGroup className="form-group">
+                    <Label htmlFor="prescribeDateTime">Prescribed Date:</Label>
+                    <Input
+                        className="medication-input"
+                        type="datetime-local"
+                        id="prescribeDateTime"
+                        value={editedMed.prescribeDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedMed }
+                                copy.prescribeDateTime = event.target.value
                                 setEditedMed(copy)
                             }
                         } />

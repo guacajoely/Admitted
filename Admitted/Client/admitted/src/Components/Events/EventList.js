@@ -39,7 +39,7 @@ export const EventList = ({ admissionId }) => {
                         <th style={{width: "25%"}}>Date</th>
                         <th style={{width: "25%"}}>Event</th>
                         <th style={{width: "25%"}}>Type</th>
-                        <th classname="button-column"></th>
+                        <th className="button-column"></th>
                     </tr>
                 </thead>
 
@@ -59,7 +59,7 @@ export const EventList = ({ admissionId }) => {
                                 <td>{formattedDate}</td>
                                 <td>{event.eventName}</td>
                                 <td>{event.eventType}</td>
-                                <td classname="button-column">
+                                <td className="button-column">
                                 <Button className="btn-sm m-1" tag={Link} to={`/events/edit/${event.id}`}>Edit</Button>
                                 <Button className="btn-sm m-1" color="danger" onClick={handleDeleteButton} id={`event--${event.id}`} >Delete</Button>
                                 </td>

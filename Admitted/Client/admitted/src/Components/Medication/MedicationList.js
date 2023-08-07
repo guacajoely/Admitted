@@ -41,7 +41,7 @@ export const MedicationList = ({ admissionId }) => {
                         <th style={{width: "20%"}}>Purpose</th>
                         <th style={{width: "10%"}}>Frequency (hours)</th>
                         <th style={{width: "15%"}}>Prescribed Date</th>
-                        <th style={{width: "20%"}} classname="button-column"></th>
+                        <th style={{width: "20%"}} className="button-column"></th>
                     </tr>
                 </thead>
 
@@ -60,7 +60,7 @@ export const MedicationList = ({ admissionId }) => {
                                 <td>{med.purpose}</td>
                                 <td>{med.frequencyHours}</td>
                                 <td>{formattedDate}</td>
-                                <td classname="button-column d-flex justify-content-start">
+                                <td className="button-column d-flex justify-content-start">
                                 <Button className="btn-sm m-1" color="primary" tag={Link} to={`/medDose/${med.id}`}>Dose History</Button>
                                 <Button className="btn-sm m-1" tag={Link} to={`/medication/edit/${med.id}`}>Edit</Button>
                                 <Button id={`med--${med.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>

@@ -12,8 +12,8 @@ namespace Admitted.Models
         [Required]
         public int RoomNum { get; set; }
         public string? RoomPhoneNum { get; set; }
-        public int? NurseChangeTime { get; set; }
-        public int? DoctorMeetTime { get; set; }
+        public string? NurseChangeTime { get; set; }
+        public string? DoctorMeetTime { get; set; }
         public int? EstimatedStayDays { get; set; }
         [Required]
         public DateTime StartDateTime { get; set; }

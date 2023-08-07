@@ -117,13 +117,15 @@ namespace Admitted.Repositories
                         SET
                             [MedicationName] = @MedicationName,
                             [Purpose] = @Purpose,
-                            [FrequencyHours] = @FrequencyHours
+                            [FrequencyHours] = @FrequencyHours,
+                            [PrescribeDateTime] = @PrescribeDateTime
                         WHERE Id = @Id
                         ";
                     cmd.Parameters.AddWithValue("@Id", medication.Id);
                     cmd.Parameters.AddWithValue("@MedicationName", medication.MedicationName);
                     cmd.Parameters.AddWithValue("@Purpose", DbUtils.ValueOrDBNull(medication.Purpose));
                     cmd.Parameters.AddWithValue("@FrequencyHours", DbUtils.ValueOrDBNull(medication.FrequencyHours));
+                    cmd.Parameters.AddWithValue("@PrescribeDateTime", medication.PrescribeDateTime);
 
                     cmd.ExecuteNonQuery();
                 }

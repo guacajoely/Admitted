@@ -39,7 +39,7 @@ export const PeopleList = ({ admissionId }) => {
                             <th style={{ width: "25%" }}>Name</th>
                             <th style={{ width: "25%" }}>Title</th>
                             <th style={{ width: "25%" }}>Date Met</th>
-                            <th classname="button-column"></th>
+                            <th className="button-column"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@ export const PeopleList = ({ admissionId }) => {
                                     <td>{person.staffName}</td>
                                     <td>{person.staffTitle}</td>
                                     <td>{formattedDateTime}</td>
-                                    <td classname="button-column">
+                                    <td className="button-column">
                                         <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
                                         <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                     </td>

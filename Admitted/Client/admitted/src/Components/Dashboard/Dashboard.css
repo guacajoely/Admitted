@@ -5,14 +5,27 @@ body{
     padding: 0;
 }
 
+.admission-button{
+    margin: 1rem auto;
+}
+
 .admission-section{
     background-color: lightgrey;
     padding: 1rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .admission-details{
     margin-bottom: 1rem;
     padding: .5rem;
+    font-size: 18px;
+}
+
+.detail{
+    font-size: 20px;
 }
 
 .admission-buttons{
@@ -21,7 +34,7 @@ body{
 
 .people-section, .medication-section, .events-section, .questions-section{
     padding: 1rem;
-    margin: 3px;
+    margin: 4px;
     background-color: aliceblue;
 }
 
@@ -41,11 +54,6 @@ th, td{
 th:last-of-type, td:last-of-type{
     border: 0;
     background-color: aliceblue;
-}
-
-.button-column{
-    max-height: 30px;
-    display: flex;
 }
 
 .form {

@@ -8,7 +8,8 @@ export const EventEdit = () => {
 
     const [editedEvent, setEditedEvent] = useState({
         eventName: "",
-        eventType: ""
+        eventType: "",
+        eventDateTime: ""
     })
 
     const {eventId} = useParams();
@@ -72,6 +73,22 @@ export const EventEdit = () => {
                             (event) => {
                                 const copy = { ...editedEvent }
                                 copy.eventType = event.target.value
+                                setEditedEvent(copy)
+                            }
+                        } />
+                </FormGroup>
+
+                <FormGroup className="form-group">
+                    <Label htmlFor="eventDateTime">Date and Time:</Label>
+                    <Input
+                        className="event-input"
+                        type="datetime-local"
+                        id="eventDateTime"
+                        value={editedEvent.eventDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedEvent }
+                                copy.eventDateTime = event.target.value
                                 setEditedEvent(copy)
                             }
                         } />

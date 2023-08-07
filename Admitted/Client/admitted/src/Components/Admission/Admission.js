@@ -28,6 +28,11 @@ export const Admission = ({ userId }) => {
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 
+    function toStandardTime(militaryTime) {
+        militaryTime = militaryTime.split(':');
+        return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
+    }
+
     const handleDeleteButtonClick = (e) => {
         e.preventDefault()
 
@@ -64,15 +69,15 @@ export const Admission = ({ userId }) => {
         <Container className="admission-section">
                 <h1>CURRENT STAY</h1>
                 <div className="admission-details">
-                    <div className="admission-prop">Name: {UserObject.fullName}</div>
-                    <div className="admission-prop">Hospital: {admission.hospitalName}</div>
-                    <div className="admission-prop">Reason: {admission.reason}</div>
-                    <div className="admission-prop">Room #: {admission.roomNum}</div>
-                    <div className="admission-prop">Room Phone #: {admission.roomPhoneNum}</div>
-                    <div className="admission-prop">Admission Date: {formattedDate}</div>
-                    <div className="admission-prop">Estimated Stay Length: {admission.estimatedStayDays} (days)</div>
-                    <div className="admission-prop">Nurse Shift Change: {admission.nurseChangeTime}</div>
-                    <div className="admission-prop">Daily Doctor Meeting: {admission.doctorMeetTime}</div>
+                    <div className="admission-prop"><strong>Name:</strong> <span className="detail">{UserObject.fullName}</span></div>
+                    <div className="admission-prop"><strong>Hospital: </strong><span className="detail">{admission.hospitalName}</span></div>
+                    <div className="admission-prop"><strong>Reason: </strong><span className="detail">{admission.reason}</span></div>
+                    <div className="admission-prop"><strong>Room #: </strong><span className="detail">{admission.roomNum}</span></div>
+                    <div className="admission-prop"><strong>Room Phone #: </strong><span className="detail">{admission.roomPhoneNum}</span></div>
+                    <div className="admission-prop"><strong>Admission Date: </strong><span className="detail">{formattedDate}</span></div>
+                    <div className="admission-prop"><strong>Estimated Stay Length: </strong><span className="detail">{admission.estimatedStayDays} (days)</span></div>
+                    <div className="admission-prop"><strong>Nurse Shift Change: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.nurseChangeTime) : "n/a"}</span></div>
+                    <div className="admission-prop"><strong>Daily Doctor Meeting: </strong><span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.doctorMeetTime) : "n/a"}</span></div>
                 </div>
                 <div className="admission-buttons">
                     <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
@@ -89,9 +94,9 @@ export const Admission = ({ userId }) => {
         //IF NO, DISPLAY "Create Stay" button
         :
         <>
-        <Container>
-            <div className="m-5">According to our records, you aren't currently admitted.</div>
-            <Button tag={Link} to="/admission/create">Create a Hospital Stay</Button>
+        <Container className="admission-section">
+            <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
+            <Button className="admission-button" tag={Link} to="/admission/create">Create a Hospital Stay</Button>
         </Container>
         </>
     )

@@ -128,13 +128,13 @@ export const AdmissionEdit = () => {
                     <Label htmlFor="nurseChangeTime">Is there a specific time nurses change shifts every day?</Label>
                     <Input
                         className="admission-input"
-                        type="number"
+                        type="time"
                         id="nurseChangeTime"
                         value={editedAdmission.nurseChangeTime}
                         onChange={
                             (event) => {
                                 const copy = { ...editedAdmission }
-                                copy.nurseChangeTime = parseInt(event.target.value)
+                                copy.nurseChangeTime = event.target.value
                                 setEditedAdmission(copy)
                             }
                         } />
@@ -144,13 +144,13 @@ export const AdmissionEdit = () => {
                     <Label htmlFor="doctorMeetTime">Is there a specific time you can expect to speak to your doctor/s daily?</Label>
                     <Input
                         className="admission-input"
-                        type="number"
+                        type="time"
                         id="doctorMeetTime"
                         value={editedAdmission.doctorMeetTime}
                         onChange={
                             (event) => {
                                 const copy = { ...editedAdmission }
-                                copy.doctorMeetTime = parseInt(event.target.value)
+                                copy.doctorMeetTime = event.target.value
                                 setEditedAdmission(copy)
                             }
                         } />

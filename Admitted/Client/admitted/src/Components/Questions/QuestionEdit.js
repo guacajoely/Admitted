@@ -7,7 +7,9 @@ export const QuestionEdit = () => {
 
     const [editedQuestion, setEditedQuestion] = useState({
         questionText: "",
-        answerText: ""
+        answerText: "",
+        questionDateTime: "",
+        answerDateTime: ""
     })
 
     const {questionId} = useParams();
@@ -32,7 +34,7 @@ export const QuestionEdit = () => {
         const questionToEdit = {
             Id: editedQuestion.id,
             QuestionDateTime: editedQuestion.questionDateTime,
-            AnswerDateTime: correctedDate,
+            AnswerDateTime: editedQuestion.answerDateTime,
             QuestionText: editedQuestion.questionText,
             AnswerText: editedQuestion.answerText,
             AdmissionId: editedQuestion.admissionId
@@ -50,6 +52,22 @@ export const QuestionEdit = () => {
             <h2 className="question-form-title">Edit/Answer Question</h2>
 
             <FormGroup className="form-group">
+                    <Label htmlFor="questionDateTime">Question Date/Time:</Label>
+                    <Input
+                        className="question-input"
+                        type="datetime-local"
+                        id="questionDateTime"
+                        value={editedQuestion.questionDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedQuestion }
+                                copy.questionDateTime = event.target.value
+                                setEditedQuestion(copy)
+                            }
+                        } />
+                </FormGroup>
+
+            <FormGroup className="form-group">
                     <Label htmlFor="questionText">Question:</Label>
                     <Input
                         className="question-input"
@@ -60,6 +78,22 @@ export const QuestionEdit = () => {
                             (event) => {
                                 const copy = { ...editedQuestion }
                                 copy.questionText = event.target.value
+                                setEditedQuestion(copy)
+                            }
+                        } />
+                </FormGroup>
+
+                <FormGroup className="form-group">
+                    <Label htmlFor="answerDateTime">Response Date/Time:</Label>
+                    <Input
+                        className="question-input"
+                        type="datetime-local"
+                        id="answerDateTime"
+                        value={editedQuestion.answerDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedQuestion }
+                                copy.answerDateTime = event.target.value
                                 setEditedQuestion(copy)
                             }
                         } />
