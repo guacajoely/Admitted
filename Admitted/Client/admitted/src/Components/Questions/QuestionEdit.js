@@ -23,11 +23,6 @@ export const QuestionEdit = () => {
         );
     }, [questionId])
 
-    const currentDate = new Date();
-    const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
-    const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
-
-
     const handleSaveButtonClick = (e) => {
         e.preventDefault()
 

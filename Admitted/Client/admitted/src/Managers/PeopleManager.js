@@ -48,4 +48,3 @@ export const getAllPeople = () => {
     return fetch(baseUrl)
         .then((res) => res.json())
 };
-

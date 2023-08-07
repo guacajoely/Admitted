@@ -1,10 +1,10 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 import { register } from "../Managers/UserManager";
 
 
-export default function Register({setIsLoggedIn}) {
+export default function Register({ setIsLoggedIn }) {
   const navigate = useNavigate();
 
   const [fullName, setFullName] = useState();
@@ -25,29 +25,30 @@ export default function Register({setIsLoggedIn}) {
           navigate('/')
         });
     }
- };
+  };
 
   return (
     <Form className="form" onSubmit={registerClick}>
+      <h2 style={{ marginBottom: "2rem" }} className="register-form-title">Register</h2>
       <fieldset>
         <FormGroup>
           <Label htmlFor="fullName">Full Name</Label>
-          <Input className="input" id="fullName" type="text" onChange={e => setFullName(e.target.value)} />
+          <Input className="input sm-text-input" id="fullName" type="text" onChange={e => setFullName(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="email">Email</Label>
-          <Input className="input" id="email" type="text" onChange={e => setEmail(e.target.value)} />
+          <Input className="input sm-text-input" id="email" type="text" onChange={e => setEmail(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="password">Password</Label>
-          <Input className="input" id="password" type="password" onChange={e => setPassword(e.target.value)} />
+          <Input className="input sm-text-input" id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </FormGroup>
 
         <FormGroup>
           <Label for="confirmPassword">Confirm Password</Label>
-          <Input className="input" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+          <Input className="input sm-text-input" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
         </FormGroup>
 
         <FormGroup>

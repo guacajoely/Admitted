@@ -95,7 +95,6 @@ export const MedicationEdit = () => {
                         } />
                 </FormGroup>
 
-
                 <FormGroup className="form-group">
                     <Label htmlFor="prescribeDateTime">Prescribed Date:</Label>
                     <Input
@@ -112,16 +111,9 @@ export const MedicationEdit = () => {
                         } />
                 </FormGroup>
 
-              
-
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Medication</Button>
                 <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
-
-
-
-
-
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { addAdmission } from "../../Managers/AdmissionManager.js"
@@ -48,7 +48,6 @@ export const AdmissionForm = () => {
         });
     };
 
-    
 
     return (
         <form className="admission-form form">
@@ -172,4 +171,4 @@ export const AdmissionForm = () => {
                 <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
-}   
+}

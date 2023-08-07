@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { editPerson, getPersonById } from "../../Managers/PeopleManager.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap"
 import { editEvent, getEventById } from "../../Managers/EventsManager.js";
@@ -40,7 +39,6 @@ export const EventEdit = () => {
                 navigate(`/`)
             })
     }
-
 
     return (
         <form className="event-form form">
@@ -94,13 +92,9 @@ export const EventEdit = () => {
                         } />
                 </FormGroup>
 
-
-
             <Button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save Event</Button>
                 <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
-
-
 }

@@ -32,6 +32,3 @@ export const editAdmission = (admissionObject) => {
         body: JSON.stringify(admissionObject)
     })
 }
-
-
-

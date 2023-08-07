@@ -72,6 +72,12 @@ th:last-of-type, td:last-of-type{
     width: 10rem;
 }
 
+.sm-text-input{
+    max-width: 20rem;
+    min-width: 10rem;
+
+}
+
 .med-text-input{
     max-width: 40rem;
     min-width: 10rem;

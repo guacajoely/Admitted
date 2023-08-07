@@ -77,8 +77,4 @@ export const PersonForm = () => {
                 <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
-
-
-
-
 }

@@ -2,7 +2,6 @@ import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { deleteQuestion, getQuestionList } from "../../Managers/QuestionsManager.js";
-import { deleteEvent, getEventList } from "../../Managers/EventsManager.js";
 
 export const QuestionList = ({ admissionId }) => {
 

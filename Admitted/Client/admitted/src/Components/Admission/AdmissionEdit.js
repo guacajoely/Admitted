@@ -52,8 +52,6 @@ export const AdmissionEdit = () => {
                 navigate(`/`)
             })
     }
-   
-
 
     return (
 

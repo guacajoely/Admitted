@@ -57,8 +57,6 @@ export const MedDoseList = () => {
         };
     };
 
-
-
     return (
 
         <div className="dose-section">
