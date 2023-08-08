@@ -32,7 +32,8 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, StaffName, StaffTitle, MeetDateTime, AdmissionId
-                         FROM People";
+                         FROM People
+                         ORDER BY MeetDateTime";
 
                     var listOfPeople = new List<People>();
 
@@ -60,7 +61,8 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, StaffName, StaffTitle, MeetDateTime, AdmissionId
                          FROM People
-                         WHERE AdmissionId = @admissionId";
+                         WHERE AdmissionId = @admissionId
+                         ORDER BY MeetDateTime";
 
                     DbUtils.AddParameter(cmd, "@admissionId", admissionId);
 

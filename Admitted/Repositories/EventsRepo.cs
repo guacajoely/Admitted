@@ -31,7 +31,8 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, EventDateTime, EventName, EventType, AdmissionId
-                         FROM Events";
+                         FROM Events
+                         ORDER BY EventDateTime";
 
                     var listOfEvents = new List<Events>();
 
@@ -59,7 +60,8 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, EventDateTime, EventName, EventType, AdmissionId
                          FROM Events
-                         WHERE AdmissionId = @admissionId";
+                         WHERE AdmissionId = @admissionId
+                         ORDER BY EventDateTime";
 
                     DbUtils.AddParameter(cmd, "@admissionId", admissionId);
 

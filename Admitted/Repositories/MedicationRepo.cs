@@ -32,7 +32,8 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, MedicationName, Purpose, FrequencyHours, PrescribeDateTime, AdmissionId
-                         FROM Medication";
+                         FROM Medication
+                         ORDER BY PrescribeDateTime";
 
                     var listOfMeds = new List<Medication>();
 
@@ -60,7 +61,8 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, MedicationName, Purpose, FrequencyHours, PrescribeDateTime, AdmissionId
                          FROM Medication
-                         WHERE AdmissionId = @admissionId";
+                         WHERE AdmissionId = @admissionId
+                         ORDER BY PrescribeDateTime";
 
                     DbUtils.AddParameter(cmd, "@admissionId", admissionId);
 

@@ -32,7 +32,8 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, QuestionDateTime, AnswerDateTime, QuestionText, AnswerText, AdmissionId
-                         FROM Questions";
+                         FROM Questions
+                         ORDER BY QuestionDateTime";
 
                     var listOfQuestions = new List<Questions>();
 
@@ -60,7 +61,8 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, QuestionDateTime, AnswerDateTime, QuestionText, AnswerText, AdmissionId
                          FROM Questions
-                         WHERE AdmissionId = @admissionId";
+                         WHERE AdmissionId = @admissionId
+                         ORDER BY QuestionDateTime";
 
                     DbUtils.AddParameter(cmd, "@admissionId", admissionId);
 

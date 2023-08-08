@@ -30,7 +30,8 @@ namespace Admitted.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, DoseDateTime, MedicationId
-                         FROM MedicationDose";
+                         FROM MedicationDose
+                         ORDER BY DoseDateTime";
 
                     var listOfDoses = new List<MedicationDose>();
 
@@ -57,7 +58,8 @@ namespace Admitted.Repositories
                     cmd.CommandText = @"
                         SELECT Id, DoseDateTime, MedicationId
                          FROM MedicationDose
-                         WHERE MedicationId = @MedicationId";
+                         WHERE MedicationId = @MedicationId
+                         ORDER BY DoseDateTime";
 
                     DbUtils.AddParameter(cmd, "@MedicationId", medId);
 
