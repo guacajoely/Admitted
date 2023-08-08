@@ -40,7 +40,11 @@ body{
     justify-content: center;
     align-items: center;
     width: 50%;
-    border: thin solid white;
+    /* border: thin solid white; */
+}
+
+.tracker-time {
+    font-size: 2rem;
 }
 
 .people-section, .medication-section, .events-section, .questions-section, .dose-section{

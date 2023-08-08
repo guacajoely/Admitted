@@ -3,7 +3,7 @@ import { getMedList, getMedicationById } from "../../Managers/MedicationManager.
 import { FormGroup, Input, Label } from "reactstrap";
 import { getMedDoseList } from "../../Managers/MedDoseManager.js";
 
-export const MedDoseTracker = ({admissionId}) => {
+export const MedDoseTracker = ({ admissionId }) => {
 
     const [medList, setMedList] = useState([]);
     const [selectedMed, setSelectedMed] = useState([]);
@@ -25,36 +25,45 @@ export const MedDoseTracker = ({admissionId}) => {
             .then((medication) => setCurrentMed(medication));
     }, [selectedMed.id])
 
-    let lastDose, lastDoseDateObject, lastDoseHour, nextDoseTime, formattedNextDose, nextDoseDateObject, nextDoseString
+    const currentDate = new Date();
+    const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
+    const correctedCurrentDateTime = new Date(currentDate.getTime() - timezoneOffset)
 
-    if(medDoseList.length > 0){
+    let lastDose, lastDoseDateObject, lastDoseHour, nextDoseDateObject, nextDoseTimeString, lastDoseTimeString
+
+    if (medDoseList.length > 0) {
 
         lastDose = medDoseList[medDoseList.length - 1]
-    
-        //get last dose as date
+
+        //get last dose as Date object
         lastDoseDateObject = new Date(lastDose.doseDateTime);
         lastDoseHour = lastDoseDateObject.getHours();
-        console.log(lastDoseHour)
 
-        //add the doseFrequency to the hours of that date object and return it as the nextDoseTime
-        
-        nextDoseDateObject = new Date(lastDoseDateObject.setHours((lastDoseHour + currentMed.frequencyHours)))
-    
-        nextDoseString = nextDoseDateObject.toLocaleString(undefined, {
-            month: 'short',
-            day: 'numeric',
+        //add the doseFrequency to the hours of that date object and return it as the next dose
+        nextDoseDateObject = new Date(lastDoseDateObject)
+        let newHours = lastDoseHour + currentMed.frequencyHours
+
+        //set hours to correct time and increase date by 1 if going into following day
+        if (newHours > 24) {
+            newHours = newHours - 24
+            nextDoseDateObject.setDate(nextDoseDateObject.getDate() + 1);
+        }
+        nextDoseDateObject.setHours(newHours)
+
+        lastDoseTimeString = lastDoseDateObject.toLocaleString(undefined, {
             hour: '2-digit',
             minute: '2-digit',
         });
 
-        console.log(nextDoseString)
-    
+        nextDoseTimeString = nextDoseDateObject.toLocaleString(undefined, {
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+
     }
-   
+
     return (
 
-        
-        
         <div className="med-tracker">
             <h3>Medication Tracker</h3>
 
@@ -69,7 +78,7 @@ export const MedDoseTracker = ({admissionId}) => {
                         id="medicationDropdown"
                         value={selectedMed.id}
                         onChange={(event) => {
-                            const copy = {...selectedMed} 
+                            const copy = { ...selectedMed }
                             copy.id = event.target.value
                             setSelectedMed(copy)
                         }}
@@ -81,10 +90,34 @@ export const MedDoseTracker = ({admissionId}) => {
                     </Input>
                 </FormGroup>
 
-            : <></>
-        }
-        
-        {medDoseList.length > 0 ? <div>You can request another dose <br></br> {nextDoseString}</div> : <></>}
+                : <></>
+            }
+
+            {currentMed.id ?
+
+                (medDoseList.length > 0) ?
+                <>
+                    <div>Your last dose of {currentMed.medicationName} was at {lastDoseTimeString}</div>
+
+                    <div>You can request another dose <br></br>
+
+                        {(nextDoseDateObject > correctedCurrentDateTime) ?
+                            <span className="tracker-time">at {nextDoseTimeString}</span>
+                            :
+                            <span className="tracker-time">now</span>}
+
+                    </div>
+                </>
+
+                :
+                <div>you don't have any doses of this medication on record</div>
+
+                :
+
+                <div></div>
+
+            }
+
 
         </div>
     )
