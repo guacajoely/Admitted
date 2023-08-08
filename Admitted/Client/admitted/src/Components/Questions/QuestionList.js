@@ -35,11 +35,11 @@ export const QuestionList = ({ admissionId }) => {
             <table className="questions-table">
                 <thead>
                     <tr>
-                        <th style={{width: "10%"}}>Date</th>
-                        <th style={{width: "20%"}}>Question</th>
-                        <th style={{width: "10%"}}>Date</th>
-                        <th style={{width: "20%"}}>Response</th>
-                        <th style={{width: "10%"}} className="button-column"></th>
+                        <th style={{maxWidth: "10%"}}>Date</th>
+                        <th style={{maxWidth: "20%"}}>Question</th>
+                        <th style={{maxWidth: "10%"}}>Date</th>
+                        <th style={{maxWidth: "20%"}}>Response</th>
+                        <th style={{width: "150px"}} className="button-column"></th>
                     </tr>
                 </thead>
 

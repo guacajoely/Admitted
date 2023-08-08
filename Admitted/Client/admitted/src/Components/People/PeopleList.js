@@ -33,13 +33,13 @@ export const PeopleList = ({ admissionId }) => {
             {peopleList.length > 0 ?
 
 
-                <table className="people-table">
+                <table cellpadding="0" cellspacing="0" className="people-table">
                     <thead>
                         <tr>
-                            <th style={{ width: "25%" }}>Name</th>
-                            <th style={{ width: "25%" }}>Title</th>
-                            <th style={{ width: "25%" }}>Date Met</th>
-                            <th className="button-column"></th>
+                            <th style={{ maxWidth: "25%" }}>Name</th>
+                            <th style={{ maxWidth: "25%" }}>Title</th>
+                            <th style={{ maxWidth: "25%" }}>Date Met</th>
+                            <th style={{ maxWidth: "150px" }} className="button-column"></th>
                         </tr>
                     </thead>
                     <tbody>

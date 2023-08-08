@@ -67,8 +67,8 @@ export const Admission = ({ userId }) => {
         //IF YES, DISPLAY DASHBOARD
         <>
         <Container className="admission-section">
-                <h1>CURRENT STAY</h1>
                 <div className="admission-details">
+                    <h1>CURRENT STAY</h1>
                     <div className="admission-prop"><strong>Name:</strong> <span className="detail">{UserObject.fullName}</span></div>
                     <div className="admission-prop"><strong>Hospital: </strong><span className="detail">{admission.hospitalName}</span></div>
                     <div className="admission-prop"><strong>Reason: </strong><span className="detail">{admission.reason}</span></div>

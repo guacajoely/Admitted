@@ -26,54 +26,54 @@ export const EventList = ({ admissionId }) => {
     };
 
     return (
-        
+
         <div className="events-section">
             <h1>Events <Button className="btn-sm m-1" color="primary" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
 
 
             {eventList.length > 0 ?
 
-            <table className="events-table">
-                <thead>
-                    <tr>
-                        <th style={{width: "25%"}}>Date</th>
-                        <th style={{width: "25%"}}>Event</th>
-                        <th style={{width: "25%"}}>Type</th>
-                        <th className="button-column"></th>
-                    </tr>
-                </thead>
+                <table className="events-table">
+                    <thead>
+                        <tr>
+                            <th style={{ maxWidth: "20%" }}>Date</th>
+                            <th style={{ maxWidth: "25%" }}>Event</th>
+                            <th style={{ maxWidth: "15%" }}>Type</th>
+                            <th style={{ width: "150px" }} className="button-column"></th>
+                        </tr>
+                    </thead>
 
-                <tbody>
+                    <tbody>
 
-                    {eventList.map((event) => {
+                        {eventList.map((event) => {
 
-                        const formattedDate = new Date(event.eventDateTime).toLocaleString(undefined, {
-                            month:  'short',
-                            day:    'numeric',
-                            hour:   '2-digit',
-                            minute: '2-digit',
-                        });
+                            const formattedDate = new Date(event.eventDateTime).toLocaleString(undefined, {
+                                month: 'short',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                            });
 
-                        return (
-                            <tr key={event.id}>
-                                <td>{formattedDate}</td>
-                                <td>{event.eventName}</td>
-                                <td>{event.eventType}</td>
-                                <td className="button-column">
-                                <Button className="btn-sm m-1" tag={Link} to={`/events/edit/${event.id}`}>Edit</Button>
-                                <Button className="btn-sm m-1" color="danger" onClick={handleDeleteButton} id={`event--${event.id}`} >Delete</Button>
-                                </td>
-                            </tr>
-                        )
-                    })}
+                            return (
+                                <tr key={event.id}>
+                                    <td>{formattedDate}</td>
+                                    <td>{event.eventName}</td>
+                                    <td>{event.eventType}</td>
+                                    <td className="button-column">
+                                        <Button className="btn-sm m-1" tag={Link} to={`/events/edit/${event.id}`}>Edit</Button>
+                                        <Button className="btn-sm m-1" color="danger" onClick={handleDeleteButton} id={`event--${event.id}`} >Delete</Button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
 
 
-            :<></>
+                : <></>
             }
-            
+
         </div>
     )
 }

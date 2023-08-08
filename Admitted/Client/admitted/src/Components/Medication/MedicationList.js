@@ -37,11 +37,11 @@ export const MedicationList = ({ admissionId }) => {
             <table className="medication-table">
                 <thead>
                     <tr>
-                        <th style={{width: "20%"}}>Name</th>
-                        <th style={{width: "20%"}}>Purpose</th>
-                        <th style={{width: "10%"}}>Frequency (hours)</th>
-                        <th style={{width: "15%"}}>Prescribed Date</th>
-                        <th style={{width: "20%"}} className="button-column"></th>
+                        <th style={{maxWidth: "20%"}}>Name</th>
+                        <th style={{maxWidth: "20%"}}>Purpose</th>
+                        <th style={{maxWidth: "10%"}}>Frequency (hours)</th>
+                        <th style={{maxWidth: "15%"}}>Prescribed Date</th>
+                        <th style={{maxWidth: "20%"}} className="button-column"></th>
                     </tr>
                 </thead>
 

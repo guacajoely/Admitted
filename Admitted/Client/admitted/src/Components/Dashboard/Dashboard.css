@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Pompiere&family=Poppins&display=swap');
 
 body{
-    background-color: lightgray;
+    background-color: black;
     margin: 0;
     padding: 0;
+    font-family: 'Poppins';
 }
 
 .admission-button{
@@ -10,18 +12,18 @@ body{
 }
 
 .admission-section{
-    background-color: lightgrey;
+    background-color: rgb(63, 63, 63);
     padding: 1rem;
     margin: auto;
     display: flex;
     flex-direction: column;
-    
 }
 
 .admission-details{
     margin-bottom: 1rem;
     padding: .5rem;
     font-size: 18px;
+    color: white;
 }
 
 .detail{
@@ -35,15 +37,17 @@ body{
 .people-section, .medication-section, .events-section, .questions-section, .dose-section{
     padding: 1rem;
     margin: 4px;
-    background-color: aliceblue;
+    background-color: lightgray;
 }
 
 table {
+    empty-cells: show;
     background-color: white;
 }
 
 table{
     text-align: center;
+    border: thin solid lightgray; 
 }
 
 th, td{
@@ -51,13 +55,14 @@ th, td{
     padding: 10px;
 }
 
-th:last-of-type, td:last-of-type{
-    border: 0;
-    background-color: aliceblue;
+.button-column{
+    border: lightgray;
+    background-color: lightgray;
 }
 
 .form {
     margin: 5rem;
+    color: white;
 }
 
 .number-input{
@@ -72,6 +77,10 @@ th:last-of-type, td:last-of-type{
     width: 10rem;
 }
 
+.datetime-input{
+    width:15rem;
+}
+
 .sm-text-input{
     max-width: 20rem;
     min-width: 10rem;
@@ -83,7 +92,4 @@ th:last-of-type, td:last-of-type{
     min-width: 10rem;
 }
 
-.datetime-input{
-    width:15rem;
-}
 
