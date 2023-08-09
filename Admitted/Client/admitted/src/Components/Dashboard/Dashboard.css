@@ -18,6 +18,13 @@ body{
     display: flex;
 }
 
+.no-admission{
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    margin: 2rem auto;
+}
+
 .admission-details{
     margin-bottom: 1rem;
     padding: .5rem;

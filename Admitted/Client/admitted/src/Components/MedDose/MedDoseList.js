@@ -1,6 +1,6 @@
 import { Button } from "reactstrap";
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addMedDose, deleteMedDose, getMedDoseList } from "../../Managers/MedDoseManager.js";
 import { getMedicationById } from "../../Managers/MedicationManager.js";
 
@@ -10,8 +10,6 @@ export const MedDoseList = () => {
     const [medication, setMedication] = useState([]);
 
     const { medId } = useParams();
-
-    const navigate = useNavigate();
 
     const currentDate = new Date()
     currentDate.setSeconds(0)
@@ -39,9 +37,8 @@ export const MedDoseList = () => {
 
         addMedDose(doseToSendToAPI)
             .then(window.location.reload())
-        // .then(getMedDoseList(medId))
-        // .then((meds) => setMedDoseList(meds))
-        // .then(navigate(`/medDose/${medId}`))
+            .then(() => getMedDoseList(medId))
+            .then((res) => setMedDoseList(res))
 
     };
 
@@ -53,7 +50,8 @@ export const MedDoseList = () => {
 
         if (results) {
             deleteMedDose(parsedId)
-                .then(window.location.reload())
+            .then(() => getMedDoseList(medId))
+            .then((res) => setMedDoseList(res))
         };
     };
 

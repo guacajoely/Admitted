@@ -20,7 +20,7 @@ export const EventList = ({ admissionId }) => {
 
         if (results) {
             deleteEvent(parsedId)
-                .then(getEventList(admissionId))
+                .then(() => getEventList(admissionId))
                 .then((events) => setEventList(events))
         };
     };

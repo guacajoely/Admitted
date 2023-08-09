@@ -19,9 +19,9 @@ export const PeopleList = ({ admissionId }) => {
         const parsedId = parseInt(personId)
 
         if (results) {
-            deletePerson(parsedId)
-                .then(getPeopleList(admissionId))
-                .then((people) => setPeopleList(people));
+            deletePerson(parsedId, admissionId)
+                .then(() => getPeopleList(admissionId))
+                .then((people) => setPeopleList(people))
         };
     };
 

@@ -41,7 +41,7 @@ export const editMedication = (medication) => {
 export const deleteMedication = (id) => {
     return fetch(`${baseUrl}/${id}`, {
         method: "DELETE",
-    }).then(getAllMedications)
+    })
 }
 
 export const getAllMedications = () => {

@@ -104,7 +104,7 @@ export const Admission = ({ userId }) => {
             //IF NO, DISPLAY "Create Stay" button
             :
             <>
-                <Container className="admission-section">
+                <Container className="no-admission">
                     <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
                     <Button className="admission-button" tag={Link} to="/admission/create">Create a Hospital Stay</Button>
                 </Container>

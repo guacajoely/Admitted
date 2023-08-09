@@ -20,7 +20,7 @@ export const QuestionList = ({ admissionId }) => {
 
         if (results) {
             deleteQuestion(parsedId)
-                .then(getQuestionList(admissionId))
+                .then(() => getQuestionList(admissionId))
                 .then((questions) => setQuestionList(questions));
         };
     };

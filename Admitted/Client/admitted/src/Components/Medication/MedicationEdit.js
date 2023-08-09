@@ -37,9 +37,7 @@ export const MedicationEdit = () => {
         }
 
         return editMedication(medToEdit)
-            .then(() => {
-                navigate(`/`)
-            })
+            .then(() => {navigate(`/`)})
     }
 
 

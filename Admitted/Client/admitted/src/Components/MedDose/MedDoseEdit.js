@@ -14,7 +14,8 @@ export const MedDoseEdit = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getMedDoseById(doseId).then((res) => {
+        getMedDoseById(doseId)
+        .then((res) => {
             setEditedDose(res)
         }
         );
