@@ -11,7 +11,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
     return (
         <div>
             <Navbar color="light" light expand="md">
-                <NavbarBrand tag={RRNavLink} to="/">Admitted</NavbarBrand>
+                <NavbarBrand tag={RRNavLink} to="/"><img className="header-image" src={require("../Images/header2.png")} alt="header logo" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

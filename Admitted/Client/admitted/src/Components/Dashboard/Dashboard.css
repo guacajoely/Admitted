@@ -7,6 +7,10 @@ body{
     font-family: 'Poppins';
 }
 
+.header-image{
+    width: 200px;
+}
+
 .admission-button{
     margin: 1rem auto;
 }
