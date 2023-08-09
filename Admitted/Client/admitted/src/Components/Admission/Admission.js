@@ -66,8 +66,8 @@ export const Admission = ({ userId }) => {
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
         admission.id ?
             //IF YES, DISPLAY DASHBOARD
-            <>
-                <Container className="admission-section">
+            <Container className="main-container">
+                <section className="admission-section">
 
                     <div className="left-side">
                         <div className="admission-details">
@@ -91,23 +91,23 @@ export const Admission = ({ userId }) => {
                     <div className="right-side">
                         <MedDoseTracker admissionId={admission.id} />
                     </div>
-                </Container>
 
-                <Container className="components-section">
+                    <div className="empty-box"></div>
+                </section>
+
+                <section className="components-section">
                     <PeopleList admissionId={admission.id} />
                     <MedicationList admissionId={admission.id} />
                     <EventList admissionId={admission.id} />
                     <QuestionList admissionId={admission.id} />
-                </Container>
-            </>
+                </section>
+            </Container>
 
             //IF NO, DISPLAY "Create Stay" button
             :
-            <>
-                <Container className="no-admission">
-                    <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
-                    <Button className="admission-button" tag={Link} to="/admission/create">Create a Hospital Stay</Button>
-                </Container>
-            </>
+            <Container className="no-admission">
+                <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
+                <Button className="admission-button" tag={Link} to="/admission/create">Create a Hospital Stay</Button>
+            </Container>
     )
 }

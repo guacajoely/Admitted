@@ -1,5 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Pompiere&family=Poppins&display=swap');
 
+
+/* mobile specific styling */
+@media only screen and (max-width: 800px) {
+
+    .admission-section{
+        flex-direction: column;
+    }
+
+    .right-side{
+        margin: .5em 0;
+    }
+
+    .people-section, .medication-section, .events-section, .questions-section, .dose-section{
+        font-size: small;
+    }
+
+    body{
+        font-size: small;
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: 13px
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: lightgray;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: darkgrey
+  }
+
 body{
     background-color: black;
     margin: 0;
@@ -11,27 +45,37 @@ body{
     width: 200px;
 }
 
+.main-container{
+    margin: auto;
+    max-width: fit-content;
+}
+
 .admission-button{
-    margin: 1rem auto;
+    margin: 1em auto;
 }
 
 .admission-section{
     background-color: rgb(63, 63, 63);
-    padding: 1rem;
-    margin: auto;
+    padding: 1em;
+    margin: 1em;
     display: flex;
+    justify-content: space-between;
+}
+
+.empty-box{
+    width:10%;
 }
 
 .no-admission{
     display: flex;
     flex-direction: column;
     font-size: large;
-    margin: 2rem auto;
+    margin: 2em auto;
 }
 
 .admission-details{
-    margin-bottom: 1rem;
-    padding: .5rem;
+    margin-bottom: 1em;
+    padding: .5em;
     font-size: 1em;
     color: white;
 }
@@ -41,35 +85,34 @@ body{
 }
 
 .admission-buttons{
-    margin: 1rem 0;
+    margin: 1em 0;
 }
 
-.right-side{
+.right-side, .med-tracker, .dose-response{
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    /* border: thin solid white; */
+    width: 30%;
+    min-width: 300px;
+    width: fit-content;
 }
 
 .tracker-time {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 .people-section, .medication-section, .events-section, .questions-section, .dose-section{
-    padding: 1rem;
-    margin: 4px;
+    padding: 1em;
+    margin: 1em;
     background-color: lightgray;
+    overflow: auto;
 }
 
 table {
     empty-cells: show;
     background-color: white;
-}
-
-table{
     text-align: center;
     border: thin solid lightgray; 
 }
@@ -84,36 +127,41 @@ th, td{
     background-color: lightgray;
 }
 
+th:last-child, td:last-child{
+    border: thin solid lightgray;
+    background-color: lightgray;
+}
+
 .form {
-    margin: 5rem;
+    margin: 5em;
     color: white;
 }
 
 .number-input{
-    width: 6rem;
+    width: 6em;
 }
 
 .time-input{
-    width: 10rem;
+    width: 10em;
 }
 
 .phone-input{
-    width: 10rem;
+    width: 10em;
 }
 
 .datetime-input{
-    width:15rem;
+    width:15em;
 }
 
 .sm-text-input{
-    max-width: 20rem;
-    min-width: 10rem;
+    max-width: 20em;
+    min-width: 10em;
 
 }
 
 .med-text-input{
-    max-width: 40rem;
-    min-width: 10rem;
+    max-width: 40em;
+    min-width: 10em;
 }
 
 

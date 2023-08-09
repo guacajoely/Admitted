@@ -64,62 +64,67 @@ export const MedDoseTracker = ({ admissionId }) => {
 
     return (
 
-        <div className="med-tracker">
-            <h3>Medication Tracker</h3>
+        <>
 
             {medList.length > 0 ?
 
-                <FormGroup>
-                    <Label for="medicationDropdown">Select Medication:</Label>
-                    <Input
-                        className="post-input"
-                        type="select"
-                        name="medication"
-                        id="medicationDropdown"
-                        value={selectedMed.id}
-                        onChange={(event) => {
-                            const copy = { ...selectedMed }
-                            copy.id = event.target.value
-                            setSelectedMed(copy)
-                        }}
-                    >
-                        <option value="">Select...</option>
-                        {medList.map((medication) => (
-                            <option key={medication.id} value={medication.id}>{medication.medicationName}</option>
-                        ))}
-                    </Input>
-                </FormGroup>
+                <div className="med-tracker">
+                    <h3>Medication Tracker</h3>
+
+                    <FormGroup>
+                        <Label for="medicationDropdown">Select Medication:</Label>
+                        <Input
+                            className="post-input"
+                            type="select"
+                            name="medication"
+                            id="medicationDropdown"
+                            value={selectedMed.id}
+                            onChange={(event) => {
+                                const copy = { ...selectedMed }
+                                copy.id = event.target.value
+                                setSelectedMed(copy)
+                            }}
+                        >
+                            <option value="">Select...</option>
+                            {medList.map((medication) => (
+                                <option key={medication.id} value={medication.id}>{medication.medicationName}</option>
+                            ))}
+                        </Input>
+                    </FormGroup>
+
+
+                    {currentMed.id ?
+
+                        (medDoseList.length > 0) ?
+                            <div className="dose-response">
+                                <div className="dose-response">Your last dose of {currentMed.medicationName} was at {lastDoseTimeString}</div>
+
+                                <div className="dose-response">You can request another dose <br></br>
+
+                                    {(nextDoseDateObject > correctedCurrentDateTime) ?
+                                        <span className="tracker-time">at {nextDoseTimeString}</span>
+                                        :
+                                        <span className="tracker-time">now</span>}
+
+                                </div>
+                            </div>
+
+                            :
+                            <div>you don't have any doses of this medication on record</div>
+
+                        :
+
+                        <></>
+
+                    }
+
+                </div>
 
                 : <></>
             }
 
-            {currentMed.id ?
 
-                (medDoseList.length > 0) ?
-                <>
-                    <div>Your last dose of {currentMed.medicationName} was at {lastDoseTimeString}</div>
-
-                    <div>You can request another dose <br></br>
-
-                        {(nextDoseDateObject > correctedCurrentDateTime) ?
-                            <span className="tracker-time">at {nextDoseTimeString}</span>
-                            :
-                            <span className="tracker-time">now</span>}
-
-                    </div>
-                </>
-
-                :
-                <div>you don't have any doses of this medication on record</div>
-
-                :
-
-                <div></div>
-
-            }
-
-
-        </div>
+        </>
     )
 }
 
