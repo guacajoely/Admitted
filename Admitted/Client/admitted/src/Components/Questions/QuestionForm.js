@@ -46,6 +46,7 @@ export const QuestionForm = () => {
                         className="question-input med-text-input"
                         type="textarea"
                         id="questionText"
+                        rows="5" cols="40"
                         value={newQuestion.questionText}
                         onChange={
                             (event) => {

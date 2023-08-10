@@ -17,7 +17,7 @@ export const MedicationList = ({ admissionId }) => {
 
     const handleDeleteButton = (event) => {
         event.preventDefault();
-        const results = (window.confirm('Are you sure you want to delete this medication?'))
+        const results = (window.confirm('This will also delete the dose history for this medication! Are you sure you want to delete this medication?'))
         const [, medId] = event.target.id.split("--")
         const parsedId = parseInt(medId)
 

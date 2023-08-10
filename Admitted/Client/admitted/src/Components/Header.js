@@ -18,7 +18,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         { /* When isLoggedIn === true, we will render the Home link */}
                         {isLoggedIn &&
                             <NavItem>
-                                <NavLink tag={RRNavLink} to="/">Home</NavLink>
+                                <NavLink style={{color:"black"}} tag={RRNavLink} to="/">Home</NavLink>
                             </NavItem>
                         }
                     </Nav>
@@ -26,7 +26,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                        <NavLink tag={RRNavLink} onClick={() => {
+                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/about">About</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                        <NavLink style={{color:"black"}} tag={RRNavLink} onClick={() => {
                                             logout()
                                             setIsLoggedIn(false)
                                         }}>Logout</NavLink>
@@ -36,10 +39,13 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         {!isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/login">Login</NavLink>
+                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/login">Login</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/register">Register</NavLink>
+                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/register">Register</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/about">About</NavLink>
                                 </NavItem>
                             </>
                         }

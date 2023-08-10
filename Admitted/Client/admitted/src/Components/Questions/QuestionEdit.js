@@ -67,6 +67,7 @@ export const QuestionEdit = () => {
                     <Input
                         className="question-input med-text-input"
                         type="textarea"
+                        rows="5" cols="40"
                         id="questionText"
                         value={editedQuestion.questionText}
                         onChange={
@@ -99,6 +100,7 @@ export const QuestionEdit = () => {
                     <Input
                         className="question-input med-text-input"
                         type="textarea"
+                        rows="5" cols="40"
                         id="answerText"
                         value={editedQuestion.answerText}
                         onChange={
