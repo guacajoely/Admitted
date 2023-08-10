@@ -24,8 +24,6 @@ export default function Login({ setIsLoggedIn }) {
     };
 
     return (
-      
-            
             <Form className="form" onSubmit={loginSubmit}>
             <h2 style={{marginBottom:"2rem"}} className="login-form-title">Login</h2>
                 <fieldset>

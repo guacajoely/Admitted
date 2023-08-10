@@ -88,6 +88,10 @@ body{
     margin: 1em 0;
 }
 
+.left-side{
+    min-width: fit-content;
+}
+
 .right-side, .med-tracker, .dose-response{
     color: white;
     display: flex;
@@ -133,8 +137,12 @@ th:last-child, td:last-child{
 }
 
 .form {
-    margin: 5em;
+    margin: 5em auto;
     color: white;
+    background-color: rgb(63, 63, 63);
+    padding: 2em;
+    border-radius: 5%;
+    width: fit-content;
 }
 
 .number-input{

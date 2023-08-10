@@ -110,7 +110,7 @@ export const MedDoseTracker = ({ admissionId }) => {
                             </div>
 
                             :
-                            <div>you don't have any doses of this medication on record</div>
+                            <div>Please add a dose to this medication's dose <br></br> history in order to track your next available.</div>
 
                         :
 
