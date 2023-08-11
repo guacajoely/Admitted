@@ -35,8 +35,10 @@ export const Admission = ({ userId }) => {
     }
 
     const handleDeleteButtonClick = (e) => {
+        const confirmed = (window.confirm("Are you sure you wish to end this stay? You will still be able to view the info you've recorded, but will be unable to edit it once ended."))
         e.preventDefault()
 
+        if(confirmed){
         const admissionToEdit = { ...admission }
 
         const admissionToSendToAPI = {
@@ -58,6 +60,7 @@ export const Admission = ({ userId }) => {
                 navigate('/')
                 window.location.reload()
             })
+        }
     }
 
 
