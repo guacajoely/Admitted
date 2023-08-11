@@ -57,7 +57,7 @@ export const AdmissionEdit = () => {
 
         <form className="admission-form form">
             <h2 className="admission-form-title">Edit your stay details</h2>
-            <h5>Note: If something is unknown, leave the input field blank.</h5>
+            <div style={{fontSize:".9em", marginBottom:"1em"}}>(If something is unknown you can leave the field blank)</div>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="reason">Reason:</Label>

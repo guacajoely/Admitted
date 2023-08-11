@@ -110,7 +110,7 @@ export const Admission = ({ userId }) => {
             :
             <Container className="no-admission">
                 <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
-                <Button className="admission-button" tag={Link} to="/admission/create">Create a Hospital Stay</Button>
+                <Button className="admission-button" tag={Link} to="/admission/create">Begin a new hospital stay</Button>
             </Container>
     )
 }
