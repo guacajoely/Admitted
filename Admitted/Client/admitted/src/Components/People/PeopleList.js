@@ -28,7 +28,7 @@ export const PeopleList = ({ admissionId }) => {
     return (
 
         <div className="people-section">
-            <h1>People <Button className="btn-sm m-1" color="primary" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button></h1>
+            <h1>People <Button className="btn-sm m-1  add-button" color="primary" tag={Link} to={`/people/create/${admissionId}`}>Add a Person</Button></h1>
 
             {peopleList.length > 0 ?
 
@@ -58,8 +58,8 @@ export const PeopleList = ({ admissionId }) => {
                                     <td>{person.staffTitle}</td>
                                     <td>{formattedDateTime}</td>
                                     <td className="button-column">
-                                        <Button className="btn-sm m-1" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
-                                        <Button id={`person--${person.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                        <Button className="btn-sm m-1 edit-button" tag={Link} to={`/people/edit/${person.id}`}>Edit</Button>
+                                        <Button id={`person--${person.id}`} className="btn-sm m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                     </td>
                                 </tr>
 

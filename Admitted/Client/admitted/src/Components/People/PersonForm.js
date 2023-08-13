@@ -73,8 +73,8 @@ export const PersonForm = () => {
                 </FormGroup>
 
             <Button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary">Save New Person</Button>
-                <Button className="m-1" tag={Link} to="/" color="danger">Cancel</Button>
+                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)} className="btn btn-primary purple-button">Save New Person</Button>
+                <Button className="m-2 delete-button" tag={Link} to="/" color="danger">Cancel</Button>
         </form>
     )
 }

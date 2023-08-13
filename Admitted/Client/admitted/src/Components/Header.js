@@ -10,7 +10,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
 
     return (
         <div>
-            <Navbar color="light" light expand="md">
+            <Navbar className='header' color="light" light expand="md">
                 <NavbarBrand tag={RRNavLink} to="/"><img className="header-image" src={require("../Images/header2.png")} alt="header logo" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
@@ -18,7 +18,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         { /* When isLoggedIn === true, we will render the Home link */}
                         {isLoggedIn &&
                             <NavItem>
-                                <NavLink style={{color:"black"}} tag={RRNavLink} to="/">Home</NavLink>
+                                <NavLink className='header-link' tag={RRNavLink} to="/">Home</NavLink>
                             </NavItem>
                         }
                     </Nav>
@@ -26,10 +26,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/about">About</NavLink>
+                                    <NavLink className='header-link' tag={RRNavLink} to="/about">About</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                        <NavLink style={{color:"black"}} tag={RRNavLink} onClick={() => {
+                                        <NavLink className='header-link' tag={RRNavLink} onClick={() => {
                                             logout()
                                             setIsLoggedIn(false)
                                         }}>Logout</NavLink>
@@ -42,7 +42,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                                     <NavLink style={{color:"black"}} tag={RRNavLink} to="/login">Login</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/register">Register</NavLink>
+                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/register">Sign Up</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink style={{color:"black"}} tag={RRNavLink} to="/about">About</NavLink>

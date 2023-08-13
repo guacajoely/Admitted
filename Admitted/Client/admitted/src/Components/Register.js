@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "../Managers/UserManager";
 
 
@@ -29,7 +29,7 @@ export default function Register({ setIsLoggedIn }) {
 
   return (
     <Form className="form" onSubmit={registerClick}>
-      <h2 style={{ marginBottom: "2rem" }} className="register-form-title">Register</h2>
+      <h2 style={{ marginBottom: "2rem" }} className="register-form-title">Create New Account</h2>
       <fieldset>
         <FormGroup>
           <Label htmlFor="fullName">Full Name</Label>
@@ -52,7 +52,8 @@ export default function Register({ setIsLoggedIn }) {
         </FormGroup>
 
         <FormGroup>
-          <Button>Register</Button>
+          <Button className="purple-button">Register</Button>
+          <Button className="m-2 delete-button" tag={Link} to="/" color="danger">Cancel</Button>
         </FormGroup>
 
       </fieldset>

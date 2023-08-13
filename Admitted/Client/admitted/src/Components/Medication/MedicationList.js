@@ -43,7 +43,7 @@ export const MedicationList = ({ admissionId }) => {
     return (
 
         <div className="medication-section">
-            <h1>Medication <Button className="btn-sm m-1" color="primary" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
+            <h1>Medication <Button className="btn-sm m-1  add-button" color="primary" tag={Link} to={`/medication/create/${admissionId}`}>Add a Medication</Button></h1>
 
             {medList.length > 0 ?
 
@@ -74,9 +74,9 @@ export const MedicationList = ({ admissionId }) => {
                                     <td>{med.frequencyHours}</td>
                                     <td>{formattedDate}</td>
                                     <td className="button-column d-flex justify-content-start">
-                                        <Button className="btn-sm m-1" color="primary" tag={Link} to={`/medDose/${med.id}`}>Dose History</Button>
-                                        <Button className="btn-sm m-1" tag={Link} to={`/medication/edit/${med.id}`}>Edit</Button>
-                                        <Button id={`med--${med.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                        <Button className="btn-sm m-1  purple-button" color="primary" tag={Link} to={`/medDose/${med.id}`}>Dose History</Button>
+                                        <Button className="btn-sm m-1 edit-button" tag={Link} to={`/medication/edit/${med.id}`}>Edit</Button>
+                                        <Button id={`med--${med.id}`} className="btn-sm m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                     </td>
                                 </tr>
                             )

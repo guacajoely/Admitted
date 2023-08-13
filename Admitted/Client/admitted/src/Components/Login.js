@@ -36,11 +36,9 @@ export default function Login({ setIsLoggedIn }) {
                         <Input className="input sm-text-input" id="password" type="password" onChange={e => setPassword(e.target.value)} />
                     </FormGroup>
                     <FormGroup>
-                        <Button>Login</Button>
+                        <Button className="m-2 purple-button">LOGIN</Button>
+                        <Button className="m-2 register-button" tag={Link} to={`/register`} color="secondary">SIGN UP</Button>
                     </FormGroup>
-                    <em>
-                        Not registered? <Link to="/register">Register</Link>
-                    </em>
                 </fieldset>
             </Form>
    

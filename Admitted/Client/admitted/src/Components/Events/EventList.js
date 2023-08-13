@@ -28,7 +28,7 @@ export const EventList = ({ admissionId }) => {
     return (
 
         <div className="events-section">
-            <h1>Events <Button className="btn-sm m-1" color="primary" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
+            <h1>Events <Button className="btn-sm m-1 add-button" color="primary" tag={Link} to={`/events/create/${admissionId}`}>Add an Event</Button></h1>
 
 
             {eventList.length > 0 ?
@@ -60,8 +60,8 @@ export const EventList = ({ admissionId }) => {
                                     <td>{event.eventName}</td>
                                     <td>{event.eventType}</td>
                                     <td className="button-column">
-                                        <Button className="btn-sm m-1" tag={Link} to={`/events/edit/${event.id}`}>Edit</Button>
-                                        <Button className="btn-sm m-1" color="danger" onClick={handleDeleteButton} id={`event--${event.id}`} >Delete</Button>
+                                        <Button className="btn-sm m-1 edit-button" tag={Link} to={`/events/edit/${event.id}`}>Edit</Button>
+                                        <Button className="btn-sm m-1 delete-button" color="danger" onClick={handleDeleteButton} id={`event--${event.id}`} >Delete</Button>
                                     </td>
                                 </tr>
                             )

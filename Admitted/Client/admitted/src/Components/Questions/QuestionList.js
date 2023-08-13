@@ -28,9 +28,11 @@ export const QuestionList = ({ admissionId }) => {
     return (
 
         <div className="questions-section">
-            <h1>Questions <Button className="btn-sm m-1" color="primary" tag={Link} to={`/questions/create/${admissionId}`}>Add a Question</Button></h1>
+            <h1>Questions <Button className="btn-sm m-1 add-button" color="primary" tag={Link} to={`/questions/create/${admissionId}`}>Add a Question</Button></h1>
 
             {questionList.length > 0 ?
+                <>
+                <h6>&nbsp;To record a response to a question, click edit.</h6>
 
                 <table className="questions-table">
                     <thead>
@@ -73,8 +75,8 @@ export const QuestionList = ({ admissionId }) => {
                                         <td>{question.answerText ? question.answerText : "NO RESPONSE RECORDED"}</td>
 
                                         <td className="button-column">
-                                            <Button className="btn-sm m-1" tag={Link} to={`/questions/edit/${question.id}`} color="secondary">Edit</Button>
-                                            <Button id={`question--${question.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                            <Button className="btn-sm m-1 edit-button" tag={Link} to={`/questions/edit/${question.id}`} color="secondary">Edit</Button>
+                                            <Button id={`question--${question.id}`} className="btn-sm m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                         </td>
                                     </tr>
                                 )
@@ -110,8 +112,8 @@ export const QuestionList = ({ admissionId }) => {
                                         <td>{question.answerText ? question.answerText : "NO RESPONSE RECORDED"}</td>
 
                                         <td className="button-column">
-                                            <Button className="btn-sm m-1" tag={Link} to={`/questions/edit/${question.id}`} color="secondary">Edit</Button>
-                                            <Button id={`question--${question.id}`} className="btn-sm m-1" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
+                                            <Button className="btn-sm m-1 edit-button" tag={Link} to={`/questions/edit/${question.id}`} color="secondary">Edit</Button>
+                                            <Button id={`question--${question.id}`} className="btn-sm m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButton}>Delete</Button>
                                         </td>
                                     </tr>
                                 )
@@ -122,6 +124,8 @@ export const QuestionList = ({ admissionId }) => {
 
                     </tbody>
                 </table>
+
+                </>
 
 
                 : <></>

@@ -86,8 +86,8 @@ export const Admission = ({ userId }) => {
                             <div className="admission-prop">Daily Doctor Meeting: <span className="detail">{admission.doctorMeetTime ? toStandardTime(admission.doctorMeetTime) : "N/A"}</span></div>
                         </div>
                         <div className="admission-buttons">
-                            <Button className="m-1" tag={Link} to="/admission/edit">Edit Details</Button>
-                            <Button className="m-1" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
+                            <Button className="m-1 purple-button" tag={Link} to="/admission/edit">Edit Details</Button>
+                            <Button className="m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@ export const Admission = ({ userId }) => {
             :
             <Container className="no-admission">
                 <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
-                <Button className="admission-button" tag={Link} to="/admission/create">Begin a new hospital stay</Button>
+                <Button className="admission-button edit-button" tag={Link} to="/admission/create">Begin a new hospital stay</Button>
             </Container>
     )
 }
