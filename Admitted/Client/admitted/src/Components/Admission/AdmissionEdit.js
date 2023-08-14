@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap";
-import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
+import { editAdmission, getActiveAdmission, getAdmissionById } from "../../Managers/AdmissionManager.js";
 
 export const AdmissionEdit = () => {
 
@@ -9,6 +9,8 @@ export const AdmissionEdit = () => {
     const UserObject = JSON.parse(localUser);
 
     const navigate = useNavigate();
+
+    const { admissionId } = useParams();
     
     const [editedAdmission, setEditedAdmission] = useState({
         reason: "",
@@ -21,11 +23,12 @@ export const AdmissionEdit = () => {
     })
 
     useEffect(() => {
-        getActiveAdmission(UserObject.id).then((res) => {
+        getAdmissionById(admissionId)
+        .then((res) => {
             setEditedAdmission(res)
         }
         );
-    }, [UserObject.id])
+    }, [admissionId])
     if (!editedAdmission) {
         return null;
     }
@@ -43,13 +46,19 @@ export const AdmissionEdit = () => {
             DoctorMeetTime: editedAdmission.doctorMeetTime,
             EstimatedStayDays: editedAdmission.estimatedStayDays,
             StartDateTime: editedAdmission.startDateTime,
-            EndDateTime: null,
+            EndDateTime: editedAdmission.endDateTime,
             UserId: UserObject.id
         }
 
         return editAdmission(admissionToEdit)
             .then(() => {
-                navigate(`/`)
+                if(editedAdmission.endDateTime){
+                    navigate(`/admission/${editedAdmission.id}`)
+                }
+                else{
+                    navigate(`/`)
+                }
+
             })
     }
 

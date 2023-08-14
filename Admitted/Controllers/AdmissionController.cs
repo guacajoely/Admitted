@@ -22,6 +22,17 @@ namespace Admitted.Controllers
             return Ok(_admissionRepo.GetAll()); 
         }
 
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            Admission admission = _admissionRepo.GetAdmissionById(id);
+            if (admission == null)
+            {
+                return NotFound();
+            }
+            return Ok(admission);
+        }
+
 
         [HttpGet("{userId}")]
         public IActionResult GetByUserId(int userId)

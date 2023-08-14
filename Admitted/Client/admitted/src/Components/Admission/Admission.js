@@ -35,7 +35,7 @@ export const Admission = ({ userId }) => {
     }
 
     const handleDeleteButtonClick = (e) => {
-        const confirmed = (window.confirm("Are you sure you wish to end this stay? You will still be able to view the info you've recorded, but will be unable to edit it once ended."))
+        const confirmed = (window.confirm("Are you sure you wish to end this stay? You will still be able to view and edit the information you've entered, but it will no longer be accessible from the main dashboard."))
         e.preventDefault()
 
         if(confirmed){
@@ -86,7 +86,7 @@ export const Admission = ({ userId }) => {
                             <div className="admission-prop">Daily Doctor Meeting: <span className="detail">{admission.doctorMeetTime ? toStandardTime(admission.doctorMeetTime) : "N/A"}</span></div>
                         </div>
                         <div className="admission-buttons">
-                            <Button className="m-1 purple-button" tag={Link} to="/admission/edit">Edit Details</Button>
+                            <Button className="m-1 purple-button" tag={Link} to={`/admission/edit/${admission.id}`}>Edit Details</Button>
                             <Button className="m-1 delete-button" color="danger" tag={Link} onClick={handleDeleteButtonClick}>Discharged</Button>
                         </div>
                     </div>

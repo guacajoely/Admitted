@@ -131,6 +131,7 @@ body{
 
 .inactive-section{
     width: fit-content;
+    margin: 2em auto;
 }
 
 table {

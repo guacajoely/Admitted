@@ -15,6 +15,7 @@ import { MedDoseList } from "./MedDose/MedDoseList.js";
 import { MedDoseEdit } from "./MedDose/MedDoseEdit.js";
 import { About } from "./About.js";
 import { InactiveList } from "./Admission/InactiveList.js";
+import { InactiveAdmission } from "./Admission/InactiveAdmission.js";
 
 export default function ApplicationViews() {
 
@@ -22,7 +23,7 @@ export default function ApplicationViews() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/admission/create" element={<AdmissionForm />} />
-        <Route path="/admission/edit" element={<AdmissionEdit />} />
+        <Route path="/admission/edit/:admissionId" element={<AdmissionEdit />} />
         <Route path="/people/create/:admissionId" element={<PersonForm />} />
         <Route path="/people/edit/:personId" element={<PersonEdit />} />
         <Route path="/medication/create/:admissionId" element={<MedicationForm />} />
@@ -35,6 +36,7 @@ export default function ApplicationViews() {
         <Route path="/medDose/edit/:doseId" element={<MedDoseEdit />} />
         <Route path="/about" element={<About />} />
         <Route path="/history/:userId" element={<InactiveList />} />
+        <Route path="/admission/:admissionId" element={<InactiveAdmission />} />
       </Routes>
    );
  

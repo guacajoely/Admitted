@@ -6,6 +6,7 @@ namespace Admitted.Repositories
     {
         List<Admission> GetAll();
         List<Admission> GetInactiveByUserId(int userId);
+        Admission GetAdmissionById(int id);
         Admission GetByUserId(int userId);
         void Add(Admission admission);
         void Update(Admission admission);

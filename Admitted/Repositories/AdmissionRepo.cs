@@ -202,6 +202,35 @@ namespace Admitted.Repositories
         }
 
 
+        public Admission GetAdmissionById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                         SELECT Id, Reason, HospitalName, RoomNum, RoomPhoneNum, NurseChangeTime, DoctorMeetTime, EstimatedStayDays, StartDateTime, EndDateTime, UserId
+                         FROM Admission
+                         WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    var reader = cmd.ExecuteReader();
+
+                    Admission admission = null;
+
+                    if (reader.Read())
+                    {
+                        admission = NewAdmissionFromReader(reader);
+                    }
+
+                    reader.Close();
+
+                    return admission;
+                }
+            }
+        }
+
 
 
 

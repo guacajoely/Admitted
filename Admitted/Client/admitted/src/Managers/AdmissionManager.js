@@ -5,10 +5,18 @@ export const getActiveAdmission = (userId) => {
         .then((res) => res.json())
 };
 
+
+export const getAdmissionById = (id) => {
+    return fetch(`${baseUrl}/GetById?Id=${id}`)
+        .then((res) => res.json())
+};
+
+
 export const getInactiveAdmissions = (userId) => {
     return fetch(`${baseUrl}/GetInactives/${userId}`)
         .then((res) => res.json())
 };
+
 
 export const addAdmission = (admissionObject) => {
     return fetch(baseUrl, {
