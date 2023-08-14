@@ -2,7 +2,7 @@
 
 Admitted is a "hospital patient assistant" you can use to keep track of information during your hospital stay. 
 
-It's simple interface allows you to record the people you interact with, the medications you're taking, significant events, and questions for your doctor.
+It's straightforward interface allows you to record the people you interact with, the medications you're taking, significant events, and questions for your doctor.
 
 ## Testing Instructions
 
