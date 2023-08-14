@@ -12,7 +12,7 @@ After cloning this repository to your own machine,
 1. Open Visual Studio.
 2. At the start screen, select `Open a Local Folder`.
 4. Navigate to your workspace directory, open the `Admitted` folder, then select the SQL folder.
-5. Run BOTH .sql files in the [SQL folder](https://github.com/guacajoely/Admitted/tree/main/SQL). (The first file creates the database and tables if they don’t already exist, and the second file inserts some sample data into those tables for testing)
+5. Execute BOTH .sql files in the [SQL folder](https://github.com/guacajoely/Admitted/tree/main/SQL) with the green play button in the top left of the window. (The first file creates the database and tables if they don’t already exist, and the second file inserts some sample data into those tables for testing)
 
 **Run the API:**
 1. Open Visual Studio.
