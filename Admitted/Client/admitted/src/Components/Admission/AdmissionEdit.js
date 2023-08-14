@@ -13,6 +13,7 @@ export const AdmissionEdit = () => {
     const { admissionId } = useParams();
     
     const [editedAdmission, setEditedAdmission] = useState({
+        startDateTime: "",
         reason: "",
         hospitalName: "",
         roomNum: "",
@@ -67,6 +68,22 @@ export const AdmissionEdit = () => {
         <form className="admission-form form">
             <h2 className="admission-form-title">Edit your stay details</h2>
             <div style={{fontSize:".9em", marginBottom:"1em"}}>(If something is unknown you can leave the field blank)</div>
+
+            <FormGroup className="form-group">
+                    <Label htmlFor="startDateTime">Admission Date</Label>
+                    <Input
+                        className="event-input datetime-input"
+                        type="datetime-local"
+                        id="startDateTime"
+                        value={editedAdmission.startDateTime}
+                        onChange={
+                            (event) => {
+                                const copy = { ...editedAdmission }
+                                copy.startDateTime = event.target.value
+                                setEditedAdmission(copy)
+                            }
+                        } />
+                </FormGroup>
 
                 <FormGroup className="form-group">
                     <Label htmlFor="reason">Reason:</Label>

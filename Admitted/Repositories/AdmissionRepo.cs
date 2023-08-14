@@ -133,6 +133,7 @@ namespace Admitted.Repositories
                             [NurseChangeTime] = @NurseChangeTime,
                             [DoctorMeetTime] = @DoctorMeetTime,
                             [EstimatedStayDays] = @EstimatedStayDays,
+                            [StartDateTime] = @StartDateTime,
                             [EndDateTime] = @EndDateTime
                         WHERE Id = @Id
                         ";
@@ -140,12 +141,13 @@ namespace Admitted.Repositories
                     cmd.Parameters.AddWithValue("@Reason", admission.Reason);
                     cmd.Parameters.AddWithValue("@HospitalName", admission.HospitalName);
                     cmd.Parameters.AddWithValue("@RoomNum", admission.RoomNum);
+                    cmd.Parameters.AddWithValue("@StartDateTime", admission.StartDateTime);
                     cmd.Parameters.AddWithValue("@RoomPhoneNum", DbUtils.ValueOrDBNull(admission.RoomPhoneNum));
                     cmd.Parameters.AddWithValue("@NurseChangeTime", DbUtils.ValueOrDBNull(admission.NurseChangeTime));
                     cmd.Parameters.AddWithValue("@DoctorMeetTime", DbUtils.ValueOrDBNull(admission.DoctorMeetTime));
                     cmd.Parameters.AddWithValue("@EstimatedStayDays", DbUtils.ValueOrDBNull(admission.EstimatedStayDays));
                     cmd.Parameters.AddWithValue("@EndDateTime", DbUtils.ValueOrDBNull(admission.EndDateTime));
-
+                   
                     cmd.ExecuteNonQuery();
                 }
             }
