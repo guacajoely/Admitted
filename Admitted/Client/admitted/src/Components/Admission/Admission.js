@@ -29,9 +29,14 @@ export const Admission = ({ userId }) => {
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 
-    function toStandardTime(militaryTime) {
+    function toTimeWithAMPM(militaryTime) {
         militaryTime = militaryTime.split(':');
         return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
+    }
+
+    function toTimeWithOutAMPM(militaryTime) {
+        militaryTime = militaryTime.split(':');
+        return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] : militaryTime.join(':')
     }
 
     const handleDeleteButtonClick = (e) => {
@@ -82,8 +87,8 @@ export const Admission = ({ userId }) => {
                             <div className="admission-prop">Room Phone #: <span className="detail">{admission.roomPhoneNum ? admission.roomPhoneNum : "N/A"}</span></div>
                             <div className="admission-prop">Admission Date: <span className="detail">{formattedDate}</span></div>
                             <div className="admission-prop">Estimated Stay Length: <span className="detail">{admission.estimatedStayDays ? admission.estimatedStayDays + " (days)" : "N/A"}</span></div>
-                            <div className="admission-prop">Nurse Shift Change: <span className="detail">{admission.nurseChangeTime ? toStandardTime(admission.nurseChangeTime) : "N/A"}</span></div>
-                            <div className="admission-prop">Daily Doctor Meeting: <span className="detail">{admission.doctorMeetTime ? toStandardTime(admission.doctorMeetTime) : "N/A"}</span></div>
+                            <div className="admission-prop">Nurse Shift Change: <span className="detail">{admission.nurseChangeTime ? toTimeWithOutAMPM(admission.nurseChangeTime) : "N/A"}</span></div>
+                            <div className="admission-prop">Daily Doctor Meeting: <span className="detail">{admission.doctorMeetTime ? toTimeWithAMPM(admission.doctorMeetTime) : "N/A"}</span></div>
                         </div>
                         <div className="admission-buttons">
                             <Button className="m-1 purple-button" tag={Link} to={`/admission/edit/${admission.id}`}>Edit Details</Button>
@@ -110,7 +115,7 @@ export const Admission = ({ userId }) => {
             :
             <Container className="no-admission">
                 <div className="m-auto admission-details"><strong>According to our records, you aren't currently admitted.</strong></div>
-                <Button className="admission-button edit-button" tag={Link} to="/admission/create">Begin a new hospital stay</Button>
+                <Button className="admission-button purple-button" tag={Link} to="/admission/create">Begin a new hospital stay</Button>
             </Container>
     )
 }
