@@ -14,6 +14,7 @@ import { QuestionEdit } from "./Questions/QuestionEdit.js";
 import { MedDoseList } from "./MedDose/MedDoseList.js";
 import { MedDoseEdit } from "./MedDose/MedDoseEdit.js";
 import { About } from "./About.js";
+import { InactiveList } from "./Admission/InactiveList.js";
 
 export default function ApplicationViews() {
 
@@ -33,6 +34,7 @@ export default function ApplicationViews() {
         <Route path="/medDose/:medId" element={<MedDoseList />} />
         <Route path="/medDose/edit/:doseId" element={<MedDoseEdit />} />
         <Route path="/about" element={<About />} />
+        <Route path="/history/:userId" element={<InactiveList />} />
       </Routes>
    );
  

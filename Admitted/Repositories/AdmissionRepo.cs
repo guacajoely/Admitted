@@ -171,6 +171,38 @@ namespace Admitted.Repositories
 
 
 
+        public List<Admission> GetInactiveByUserId(int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                         SELECT Id, Reason, HospitalName, RoomNum, RoomPhoneNum, NurseChangeTime, DoctorMeetTime, EstimatedStayDays, StartDateTime, EndDateTime, UserId
+                         FROM Admission
+                         WHERE UserId = @userId AND EndDateTime IS NOT NULL
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@userId", userId);
+
+                    var reader = cmd.ExecuteReader();
+
+                    var admissions = new List<Admission>();
+
+                    while (reader.Read())
+                    {
+                        admissions.Add(NewAdmissionFromReader(reader));
+                    }
+                    reader.Close();
+
+                    return admissions;
+                }
+            }
+        }
+
+
+
 
 
     }

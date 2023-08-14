@@ -1,12 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import { logout } from '../Managers/UserManager';
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getInactiveAdmissions } from '../Managers/AdmissionManager.js';
 
 export default function Header({ isLoggedIn, setIsLoggedIn }) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+
+    let localUser = []
+    let UserObject = []
+
+    if(isLoggedIn === true){
+        localUser = localStorage.getItem("user");
+        UserObject = JSON.parse(localUser);
+    }
+
+    const [inactiveAdmissions, setInactiveAdmissions] = useState([]);
+
+    useEffect(() => {
+        getInactiveAdmissions(UserObject.id)
+            .then((admissions) => setInactiveAdmissions(admissions));
+    }, [UserObject.id])
+
 
     return (
         <div>
@@ -28,6 +45,17 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                                 <NavItem>
                                     <NavLink className='header-link' tag={RRNavLink} to="/about">About</NavLink>
                                 </NavItem>
+
+
+
+                                {inactiveAdmissions.length > 0 ? 
+                                    <NavItem>
+                                        <NavLink className='header-link' tag={RRNavLink} to={`/history/${UserObject.id}`}>History</NavLink>
+                                    </NavItem> 
+                                :
+                                <></>
+                                }
+
                                 <NavItem>
                                         <NavLink className='header-link' tag={RRNavLink} onClick={() => {
                                             logout()
@@ -39,13 +67,13 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                         {!isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/login">Login</NavLink>
+                                    <NavLink className='header-link' tag={RRNavLink} to="/login">Login</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/register">Sign Up</NavLink>
+                                    <NavLink className='header-link' tag={RRNavLink} to="/register">Sign Up</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink style={{color:"black"}} tag={RRNavLink} to="/about">About</NavLink>
+                                    <NavLink className='header-link' tag={RRNavLink} to="/about">About</NavLink>
                                 </NavItem>
                             </>
                         }

@@ -35,6 +35,18 @@ namespace Admitted.Controllers
             return Ok(admission);
         }
 
+        [HttpGet("GetInactives/{userId}")]
+        public IActionResult GetInactiveByUserId(int userId)
+        {
+            List<Admission> admissions = _admissionRepo.GetInactiveByUserId(userId);
+
+            if (userId == null || admissions == null)
+            {
+                return NotFound();
+            }
+            return Ok(admissions);
+        }
+
 
         [HttpPost]
         public IActionResult Admission(Admission admission)

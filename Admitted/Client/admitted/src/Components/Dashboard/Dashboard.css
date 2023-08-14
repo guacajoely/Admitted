@@ -121,13 +121,16 @@ body{
     font-size: 2em;
 }
 
-.people-section, .medication-section, .events-section, .questions-section, .dose-section{
+.people-section, .medication-section, .events-section, .questions-section, .dose-section, .inactive-section{
     padding: 1em;
     margin: 1em;
     background-color: #86adb1;
     overflow: auto;
     border-radius: 20px;
-    
+}
+
+.inactive-section{
+    width: fit-content;
 }
 
 table {
