@@ -60,6 +60,8 @@ export const MedDoseList = () => {
         <div className="dose-section">
             <h1>Doses of {medication.medicationName} <Button className="btn-sm m-1 purple-button" color="primary" onClick={handleAddButton}>Add a Dose</Button></h1>
 
+            {medDoseList.length > 0 ?
+
             <table className="dose-table">
                 <thead>
                     <tr>
@@ -92,6 +94,15 @@ export const MedDoseList = () => {
 
                 </tbody>
             </table>
+
+            :
+
+            <div>You don't currently have any doses of this medication recorded.</div>
+            
+        }
+
+
         </div>
+        
     )
 }
