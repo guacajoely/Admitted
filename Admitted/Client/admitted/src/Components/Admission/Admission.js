@@ -81,10 +81,10 @@ export const Admission = ({ userId, setInactiveAdmissions }) => {
             }
 
             return editAdmission(admissionToSendToAPI)
-                .then(() => { getInactiveAdmissions(UserObject.id) })
+                .then(() => getActiveAdmission(userId))
+                .then((admission) => setAdmission(admission))
+                .then(() => getInactiveAdmissions(UserObject.id))
                 .then((admissions) => setInactiveAdmissions(admissions))
-                .then(() => { navigate('/') })
-                .then(() => { window.location.reload() })
 
         }
     }

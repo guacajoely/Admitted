@@ -36,7 +36,6 @@ export const MedDoseList = () => {
         }
 
         addMedDose(doseToSendToAPI)
-            .then(window.location.reload())
             .then(() => getMedDoseList(medId))
             .then((res) => setMedDoseList(res))
 
