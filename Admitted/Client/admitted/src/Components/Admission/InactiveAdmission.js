@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import { getAdmissionById } from "../../Managers/AdmissionManager.js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Container } from "reactstrap";
 import { PeopleList } from "../People/PeopleList.js";
 import { MedicationList } from "../Medication/MedicationList.js";
 import { EventList } from "../Events/EventList.js";
 import { QuestionList } from "../Questions/QuestionList.js";
+import SubHeader from "../SubHeader.js";
 
 export const InactiveAdmission = () => {
 
@@ -21,6 +22,19 @@ export const InactiveAdmission = () => {
     const localUser = localStorage.getItem("user");
     const UserObject = JSON.parse(localUser);
 
+     //SUB-HEADER SCROLL TO SECTIONS FUNCTIONALITY
+     const mainRef = useRef(null);
+     const peopleRef = useRef(null);
+     const medsRef = useRef(null);
+     const eventsRef = useRef(null);
+     const questionsRef = useRef(null);
+ 
+     const scrollToMain = () => mainRef.current.scrollIntoView({ behavior: "smooth" });
+     const scrollToPeople = () => peopleRef.current.scrollIntoView({ behavior: "smooth" });
+     const scrollToMeds = () => medsRef.current.scrollIntoView({ behavior: "smooth" });
+     const scrollToEvents = () => eventsRef.current.scrollIntoView({ behavior: "smooth" });
+     const scrollToQuestions = () => questionsRef.current.scrollIntoView({ behavior: "smooth" });
+
     //format start date
     const AdmissionStartDateObject = new Date(inactiveAdmission.startDateTime);
     const formattedStartDate = AdmissionStartDateObject.toLocaleDateString();
@@ -30,29 +44,29 @@ export const InactiveAdmission = () => {
     const formattedEndDate = AdmissionEndDateObject.toLocaleDateString();
 
     //get # of days between start and end
-
-      
-    // To calculate the time difference of two dates
+    //calculate time difference of two dates
     const differenceInTime = AdmissionEndDateObject.getTime() - AdmissionStartDateObject.getTime();
       
-    // To calculate the no. of days between two dates
+    //calculate the no. of days between those two dates
     const differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
-      
-
-
-
-    function toStandardTime(militaryTime) {
-        militaryTime = militaryTime.split(':');
-        return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
-    }
 
     return (
 
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
         inactiveAdmission.id ?
             //IF YES, DISPLAY DASHBOARD
+            <>
+            <SubHeader scrollToPeople={scrollToPeople} 
+                scrollToMeds={scrollToMeds}
+                scrollToEvents={scrollToEvents}
+                scrollToQuestions={scrollToQuestions}
+                scrollToMain={scrollToMain}
+            />
+
+
+
             <Container className="main-container">
-                <section className="admission-section">
+                <section className="admission-section" style={{scrollMargin: "60px"}} ref={mainRef}>
 
                     <div className="left-side">
                         <div className="admission-details">
@@ -77,12 +91,21 @@ export const InactiveAdmission = () => {
                 </section>
 
                 <section className="components-section">
-                    <PeopleList admissionId={inactiveAdmission.id} />
-                    <MedicationList admissionId={inactiveAdmission.id} />
-                    <EventList admissionId={inactiveAdmission.id} />
-                    <QuestionList admissionId={inactiveAdmission.id} />
-                </section>
+                        <div style={{scrollMargin: "60px"}} ref={peopleRef}>
+                            <PeopleList admissionId={inactiveAdmission.id} />
+                        </div>
+                        <div style={{scrollMargin: "60px"}} ref={medsRef}>
+                            <MedicationList admissionId={inactiveAdmission.id} />
+                        </div>
+                        <div style={{scrollMargin: "60px"}} ref={eventsRef}>
+                            <EventList admissionId={inactiveAdmission.id} />
+                        </div>
+                        <div style={{scrollMargin: "60px"}} ref={questionsRef}>
+                            <QuestionList admissionId={inactiveAdmission.id} />
+                        </div>
+                    </section>
             </Container>
+            </>
 
             //IF NO, DISPLAY "No Previous Admissions" text
             :

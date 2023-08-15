@@ -18,9 +18,11 @@ export const Admission = ({ userId }) => {
             .then((admission) => setAdmission(admission));
     }, [userId])
 
+    //grab user from localStorage
     const localUser = localStorage.getItem("user");
     const UserObject = JSON.parse(localUser);
 
+    //use Nav from react router
     const navigate = useNavigate();
 
     //SCROLL TO FUNCTIONALITY
@@ -36,18 +38,22 @@ export const Admission = ({ userId }) => {
     const scrollToEvents = () => eventsRef.current.scrollIntoView({ behavior: "smooth" });
     const scrollToQuestions = () => questionsRef.current.scrollIntoView({ behavior: "smooth" });
 
+    //convert DateTime to String
     const AdmissionDateTime = new Date(admission.startDateTime);
-    const formattedDate = AdmissionDateTime.toLocaleDateString();
+    const formattedAdmissionDate = AdmissionDateTime.toLocaleDateString();
 
+    //get current DateTime adjusted for timezone
     const currentDate = new Date();
     const timezoneOffset = currentDate.getTimezoneOffset() * 60 * 1000;
     const correctedDate = new Date(currentDate.getTime() - timezoneOffset)
 
+    //CONVERT DR VISIT TIME TO AM/PM
     function toTimeWithAMPM(militaryTime) {
         militaryTime = militaryTime.split(':');
         return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
     }
 
+    //nurse shift change DOES NOT need an AM/PM because occurs twice daily, so removed
     function toTimeWithOutAMPM(militaryTime) {
         militaryTime = militaryTime.split(':');
         return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] : militaryTime.join(':')
@@ -89,6 +95,7 @@ export const Admission = ({ userId }) => {
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
         admission.id ?
             //IF YES, DISPLAY DASHBOARD
+            
             <>
             <SubHeader scrollToPeople={scrollToPeople} 
                 scrollToMeds={scrollToMeds}
@@ -107,7 +114,7 @@ export const Admission = ({ userId }) => {
                                 <div className="admission-prop">Reason: <span className="detail">{admission.reason}</span></div>
                                 <div className="admission-prop">Room #: <span className="detail">{admission.roomNum}</span></div>
                                 <div className="admission-prop">Room Phone #: <span className="detail">{admission.roomPhoneNum ? admission.roomPhoneNum : "N/A"}</span></div>
-                                <div className="admission-prop">Admission Date: <span className="detail">{formattedDate}</span></div>
+                                <div className="admission-prop">Admission Date: <span className="detail">{formattedAdmissionDate}</span></div>
                                 <div className="admission-prop">Estimated Stay Length: <span className="detail">{admission.estimatedStayDays ? admission.estimatedStayDays + " (days)" : "N/A"}</span></div>
                                 <div className="admission-prop">Nurse Shift Change: <span className="detail">{admission.nurseChangeTime ? toTimeWithOutAMPM(admission.nurseChangeTime) : "N/A"}</span></div>
                                 <div className="admission-prop">Daily Doctor Meeting: <span className="detail">{admission.doctorMeetTime ? toTimeWithAMPM(admission.doctorMeetTime) : "N/A"}</span></div>

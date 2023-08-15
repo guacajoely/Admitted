@@ -36,9 +36,9 @@ export const EventList = ({ admissionId }) => {
                 <table className="events-table">
                     <thead>
                         <tr>
-                            <th style={{ maxWidth: "20%" }}>Date</th>
-                            <th style={{ maxWidth: "25%" }}>Event</th>
-                            <th style={{ maxWidth: "15%" }}>Type</th>
+                            <th style={{ maxWidth: "20%", minWidth:"6em" }}>Date</th>
+                            <th style={{ maxWidth: "25%", minWidth:"6em"  }}>Event</th>
+                            <th style={{ maxWidth: "15%", minWidth:"6em"  }}>Type</th>
                             <th style={{ width: "150px" }} className="button-column"></th>
                         </tr>
                     </thead>
