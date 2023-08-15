@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Button } from "reactstrap"
 import { useState, useEffect, useRef } from "react";
-import { editAdmission, getActiveAdmission } from "../../Managers/AdmissionManager.js";
+import { editAdmission, getActiveAdmission, getInactiveAdmissions } from "../../Managers/AdmissionManager.js";
 import { PeopleList } from "../People/PeopleList.js";
 import { MedicationList } from "../Medication/MedicationList.js";
 import { EventList } from "../Events/EventList.js";
@@ -9,7 +9,7 @@ import { QuestionList } from "../Questions/QuestionList.js";
 import { MedDoseTracker } from "../MedDose/MedDoseTracker.js";
 import SubHeader from "../SubHeader.js";
 
-export const Admission = ({ userId }) => {
+export const Admission = ({ userId, setInactiveAdmissions }) => {
 
     const [admission, setAdmission] = useState([]);
 
@@ -81,10 +81,11 @@ export const Admission = ({ userId }) => {
             }
 
             return editAdmission(admissionToSendToAPI)
-                .then(() => {
-                    navigate('/')
-                    window.location.reload()
-                })
+                .then(() => { getInactiveAdmissions(UserObject.id) })
+                .then((admissions) => setInactiveAdmissions(admissions))
+                .then(() => { navigate('/') })
+                .then(() => { window.location.reload() })
+
         }
     }
 
@@ -95,16 +96,17 @@ export const Admission = ({ userId }) => {
         //CHECK IF THERE IS AN ACTIVE ADMISSION CURRENTLY STORED IN STATE
         admission.id ?
             //IF YES, DISPLAY DASHBOARD
-            
+
             <>
-            <SubHeader scrollToPeople={scrollToPeople} 
-                scrollToMeds={scrollToMeds}
-                scrollToEvents={scrollToEvents}
-                scrollToQuestions={scrollToQuestions}
-                scrollToMain={scrollToMain}
-            />
+                <SubHeader scrollToPeople={scrollToPeople}
+                    scrollToMeds={scrollToMeds}
+                    scrollToEvents={scrollToEvents}
+                    scrollToQuestions={scrollToQuestions}
+                    scrollToMain={scrollToMain}
+                />
                 <Container className="main-container">
-                    <section className="admission-section" style={{scrollMargin: "60px"}} ref={mainRef}>
+                    {/* scroll margin is 1000px just so goes to top of page, not just top of section */}
+                    <section className="admission-section" style={{ scrollMargin: "1000px" }} ref={mainRef}>
 
                         <div className="left-side">
                             <div className="admission-details">
@@ -133,16 +135,16 @@ export const Admission = ({ userId }) => {
                     </section>
 
                     <section className="components-section">
-                        <div style={{scrollMargin: "60px"}} ref={peopleRef}>
+                        <div style={{ scrollMargin: "60px" }} ref={peopleRef}>
                             <PeopleList admissionId={admission.id} />
                         </div>
-                        <div style={{scrollMargin: "60px"}} ref={medsRef}>
+                        <div style={{ scrollMargin: "60px" }} ref={medsRef}>
                             <MedicationList admissionId={admission.id} />
                         </div>
-                        <div style={{scrollMargin: "60px"}} ref={eventsRef}>
+                        <div style={{ scrollMargin: "60px" }} ref={eventsRef}>
                             <EventList admissionId={admission.id} />
                         </div>
-                        <div style={{scrollMargin: "60px"}} ref={questionsRef}>
+                        <div style={{ scrollMargin: "60px" }} ref={questionsRef}>
                             <QuestionList admissionId={admission.id} />
                         </div>
                     </section>

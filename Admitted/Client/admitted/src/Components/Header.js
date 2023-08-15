@@ -5,7 +5,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getInactiveAdmissions } from '../Managers/AdmissionManager.js';
 
-export default function Header({ isLoggedIn, setIsLoggedIn }) {
+export default function Header({ isLoggedIn, setIsLoggedIn, inactiveAdmissions, setInactiveAdmissions}) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
@@ -17,12 +17,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
         UserObject = JSON.parse(localUser);
     }
 
-    const [inactiveAdmissions, setInactiveAdmissions] = useState([]);
-
     useEffect(() => {
         getInactiveAdmissions(UserObject.id)
             .then((admissions) => setInactiveAdmissions(admissions));
-    }, [UserObject.id])
+    }, [UserObject.id, setInactiveAdmissions])
 
 
     return (
@@ -48,12 +46,24 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
 
 
 
+                                {inactiveAdmissions ? 
+
+                                <>
+                                
                                 {inactiveAdmissions.length > 0 ?
                                     <NavItem>
                                         <NavLink className='header-link' tag={RRNavLink} to={`/history/${UserObject.id}`}>History</NavLink>
                                     </NavItem>
                                     :
                                     <></>
+                                }
+
+                                </>
+
+                                :
+
+                                <></>
+
                                 }
 
                                 <NavItem>

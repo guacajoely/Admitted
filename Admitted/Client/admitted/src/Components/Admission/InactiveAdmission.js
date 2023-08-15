@@ -63,10 +63,11 @@ export const InactiveAdmission = () => {
                 scrollToMain={scrollToMain}
             />
 
-
+        
 
             <Container className="main-container">
-                <section className="admission-section" style={{scrollMargin: "60px"}} ref={mainRef}>
+                {/* scroll margin is 1000px just so goes to top of page, not just top of section */}
+                <section className="admission-section" style={{scrollMargin: "1000px"}} ref={mainRef}>
 
                     <div className="left-side">
                         <div className="admission-details">

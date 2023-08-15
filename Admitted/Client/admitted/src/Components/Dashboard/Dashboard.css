@@ -153,6 +153,11 @@ body{
     border-radius: 20px;
 }
 
+.dose-section{
+    width: fit-content;
+    margin: 5em auto;
+}
+
 .inactive-section{
     width: fit-content;
     margin: 2em auto;

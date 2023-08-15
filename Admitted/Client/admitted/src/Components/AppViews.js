@@ -17,11 +17,11 @@ import { About } from "./About.js";
 import { InactiveList } from "./Admission/InactiveList.js";
 import { InactiveAdmission } from "./Admission/InactiveAdmission.js";
 
-export default function ApplicationViews() {
+export default function ApplicationViews({ setInactiveAdmissions }) {
 
  return(
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={<Dashboard setInactiveAdmissions={setInactiveAdmissions}/>} />
         <Route path="/admission/create" element={<AdmissionForm />} />
         <Route path="/admission/edit/:admissionId" element={<AdmissionEdit />} />
         <Route path="/people/create/:admissionId" element={<PersonForm />} />

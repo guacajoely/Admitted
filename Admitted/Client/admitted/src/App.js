@@ -8,6 +8,7 @@ import SubHeader from './Components/SubHeader.js';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [inactiveAdmissions, setInactiveAdmissions] = useState([]);
 
     useEffect(() => {
         if (localStorage.getItem("user")) {
@@ -17,11 +18,11 @@ function App() {
 
     return (
         <Router>
-            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} inactiveAdmissions={inactiveAdmissions} setInactiveAdmissions={setInactiveAdmissions}/>
             {!isLoggedIn ?
                 <Authorize setIsLoggedIn={setIsLoggedIn} />
                 :
-                <ApplicationViews />
+                <ApplicationViews setInactiveAdmissions={setInactiveAdmissions}/>
             }
         </Router>
     );
