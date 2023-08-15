@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
 import { logout } from '../Managers/UserManager';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getInactiveAdmissions } from '../Managers/AdmissionManager.js';
 
@@ -12,7 +12,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
     let localUser = []
     let UserObject = []
 
-    if(isLoggedIn === true){
+    if (isLoggedIn === true) {
         localUser = localStorage.getItem("user");
         UserObject = JSON.parse(localUser);
     }
@@ -31,36 +31,36 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                 <NavbarBrand tag={RRNavLink} to="/"><img className="header-image" src={require("../Images/header2.png")} alt="header logo" /></NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
+
                     <Nav className="mr-auto" navbar>
-                        { /* When isLoggedIn === true, we will render the Home link */}
-                        {isLoggedIn &&
-                            <NavItem>
-                                <NavLink className='header-link' tag={RRNavLink} to="/">Home</NavLink>
-                            </NavItem>
-                        }
                     </Nav>
-                    <Nav navbar>
+
+                    <Nav className='main-links' navbar>
                         {isLoggedIn &&
                             <>
+
+                                <NavItem>
+                                    <NavLink className='header-link' tag={RRNavLink} to="/">Home</NavLink>
+                                </NavItem>
                                 <NavItem>
                                     <NavLink className='header-link' tag={RRNavLink} to="/about">About</NavLink>
                                 </NavItem>
 
 
 
-                                {inactiveAdmissions.length > 0 ? 
+                                {inactiveAdmissions.length > 0 ?
                                     <NavItem>
                                         <NavLink className='header-link' tag={RRNavLink} to={`/history/${UserObject.id}`}>History</NavLink>
-                                    </NavItem> 
-                                :
-                                <></>
+                                    </NavItem>
+                                    :
+                                    <></>
                                 }
 
                                 <NavItem>
-                                        <NavLink className='header-link' tag={RRNavLink} onClick={() => {
-                                            logout()
-                                            setIsLoggedIn(false)
-                                        }}>Logout</NavLink>
+                                    <NavLink className='header-link' tag={RRNavLink} onClick={() => {
+                                        logout()
+                                        setIsLoggedIn(false)
+                                    }}>Logout</NavLink>
                                 </NavItem>
                             </>
                         }

@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import ApplicationViews from "./Components/AppViews";
 import { useEffect } from 'react';
 import Authorize from './Components/Authorize';
+import SubHeader from './Components/SubHeader.js';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
