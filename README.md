@@ -4,8 +4,14 @@ Admitted is a "hospital patient assistant" you can use to keep track of informat
 
 Its straightforward interface allows you to record the people you interact with, the medications you're taking (as well as each dose), significant events, and questions for your doctor.
 
-## Testing Instructions
 
+## Demo
+This app was built as a final, full stack capstone project at the end of a 6-month bootcamp called [NewForce](https://generationwv.org/programs/newforce/).
+
+You can watch a video of me presenting my app [HERE](https://www.loom.com/share/dd37a1aabd2b4c9e94be5783ba9c17c4?sid=8b5b4def-4437-4c53-9321-0fea34d94de6)!
+
+
+## Testing Instructions
 After cloning this repository to your own machine,
 
 **Create the Database:**
