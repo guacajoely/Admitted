@@ -20,7 +20,6 @@ namespace Admitted.Repositories
         }
 
 
-
         public List<MedicationDose> GetAll()
         {
             using (var conn = Connection)

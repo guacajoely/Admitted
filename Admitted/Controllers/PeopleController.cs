@@ -1,7 +1,6 @@
 ﻿using Admitted.Models;
 using Admitted.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
 
 namespace Admitted.Controllers
 {

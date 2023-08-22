@@ -49,7 +49,6 @@ namespace Admitted.Repositories
             }
         }
 
-
         public List<Events> GetAllByAdmissionId(int admissionId)
         {
             using (var conn = Connection)
@@ -79,7 +78,6 @@ namespace Admitted.Repositories
                 }
             }
         }
-
 
         public void Add(Events events)
         {

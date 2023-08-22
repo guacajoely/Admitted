@@ -120,13 +120,10 @@ namespace Admitted.Utils
         }
 
 
-
-
         public static object ValueOrDBNull(object value)
         {
             return value ?? DBNull.Value;
         }
-
 
 
         public static string? GetNullableString(SqlDataReader reader, string column)
@@ -138,8 +135,6 @@ namespace Admitted.Utils
             }
             return reader.GetString(ordinal);
         }
-
-
 
 
 

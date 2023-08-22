@@ -5,6 +5,7 @@ namespace Admitted.Models
     public class Medication
     {
         public int Id { get; set; }
+
         [Required]
         public string MedicationName { get; set; }
         public string? Purpose { get; set; }

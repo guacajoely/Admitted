@@ -53,7 +53,6 @@ namespace Admitted.Repositories
             }
         }
 
-
         public Admission GetByUserId(int userId)
         {
             using (var conn = Connection)
@@ -84,7 +83,6 @@ namespace Admitted.Repositories
             }
         }
 
-
         public void Add(Admission admission)
         {
             using (var conn = Connection)
@@ -114,7 +112,6 @@ namespace Admitted.Repositories
                 }
             }
         }
-
 
         public void Update(Admission admission)
         {
@@ -172,7 +169,6 @@ namespace Admitted.Repositories
         }
 
 
-
         public List<Admission> GetInactiveByUserId(int userId)
         {
             using (var conn = Connection)
@@ -203,7 +199,6 @@ namespace Admitted.Repositories
             }
         }
 
-
         public Admission GetAdmissionById(int id)
         {
             using (var conn = Connection)
@@ -232,7 +227,6 @@ namespace Admitted.Repositories
                 }
             }
         }
-
 
 
 
