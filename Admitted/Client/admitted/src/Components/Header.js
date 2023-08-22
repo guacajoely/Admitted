@@ -3,7 +3,7 @@ import { NavLink as RRNavLink } from "react-router-dom";
 import { logout } from '../Managers/UserManager';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getInactiveAdmissions } from '../Managers/AdmissionManager.js';
+import { checkIfInactiveAdmissions } from '../Managers/AdmissionManager.js';
 
 export default function Header({ isLoggedIn, setIsLoggedIn, inactiveAdmissions, setInactiveAdmissions}) {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +18,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn, inactiveAdmissions, 
     }
 
     useEffect(() => {
-        getInactiveAdmissions(UserObject.id)
-            .then((admissions) => setInactiveAdmissions(admissions));
+        if(UserObject.id){
+        checkIfInactiveAdmissions(UserObject.id)
+            .then((bool) => setInactiveAdmissions(bool));
+        }
     }, [UserObject.id, setInactiveAdmissions])
 
 
@@ -46,11 +48,11 @@ export default function Header({ isLoggedIn, setIsLoggedIn, inactiveAdmissions, 
 
 
 
-                                {inactiveAdmissions ? 
+                                {UserObject.id ? 
 
                                 <>
                                 
-                                {inactiveAdmissions.length > 0 ?
+                                {inactiveAdmissions ?
                                     <NavItem>
                                         <NavLink className='header-link' tag={RRNavLink} to={`/history/${UserObject.id}`}>History</NavLink>
                                     </NavItem>

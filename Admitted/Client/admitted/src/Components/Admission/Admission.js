@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container, Button } from "reactstrap"
 import { useState, useEffect, useRef } from "react";
-import { editAdmission, getActiveAdmission, getInactiveAdmissions } from "../../Managers/AdmissionManager.js";
+import { checkIfActiveAdmissions, editAdmission, getActiveAdmission, getInactiveAdmissions } from "../../Managers/AdmissionManager.js";
 import { PeopleList } from "../People/PeopleList.js";
 import { MedicationList } from "../Medication/MedicationList.js";
 import { EventList } from "../Events/EventList.js";
@@ -12,11 +12,19 @@ import SubHeader from "../SubHeader.js";
 export const Admission = ({ userId, setInactiveAdmissions }) => {
 
     const [admission, setAdmission] = useState([]);
+    const [isAdmission, setIsAdmission] = useState(false);
 
     useEffect(() => {
+        checkIfActiveAdmissions(userId)
+            .then((bool) => setIsAdmission(bool))
+    }, [userId])
+
+    useEffect(() => {
+        if(isAdmission){
         getActiveAdmission(userId)
             .then((admission) => setAdmission(admission));
-    }, [userId])
+        }
+    }, [userId, isAdmission])
 
     //grab user from localStorage
     const localUser = localStorage.getItem("user");

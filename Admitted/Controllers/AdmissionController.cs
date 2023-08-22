@@ -58,6 +58,35 @@ namespace Admitted.Controllers
             return Ok(admissions);
         }
 
+        //DOES SAME AS GetByUserId BUT JUST RETURNS TRUE/FALSE
+        //USED TO CHECK BEFORE ATTEMPTING TO DISPLAY
+        [HttpGet("CheckActives/{userId}")]
+        public IActionResult GetActiveBool(int userId)
+        {
+            var admission = _admissionRepo.GetByUserId(userId);
+
+            if (admission == null)
+            {
+                return Ok(false);
+            }
+            return Ok(true);
+        }
+
+
+        //DOES SAME AS GetInactiveByUserId BUT JUST RETURNS TRUE/FALSE
+        //USED IN HEADER TO DISPLAY LINK TO 'HISTORY' OR NOT
+        [HttpGet("CheckInactives/{userId}")]
+        public IActionResult GetInactiveBool(int userId)
+        {
+            List<Admission> admissions = _admissionRepo.GetInactiveByUserId(userId);
+
+            if (admissions.Count == 0)
+            {
+                return Ok(false);
+            }
+            return Ok(true);
+        }
+
 
         [HttpPost]
         public IActionResult Admission(Admission admission)

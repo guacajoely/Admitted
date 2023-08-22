@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMedList, getMedicationById } from "../../Managers/MedicationManager.js";
-import { FormGroup, Input, Label } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 import { getMedDoseList } from "../../Managers/MedDoseManager.js";
 
 export const MedDoseTracker = ({ admissionId }) => {
@@ -16,13 +16,17 @@ export const MedDoseTracker = ({ admissionId }) => {
     }, [admissionId])
 
     useEffect(() => {
-        getMedDoseList(selectedMed.id)
+        if(selectedMed.id > 0){
+            getMedDoseList(selectedMed.id)
             .then((meds) => setMedDoseList(meds));
+        }
     }, [selectedMed.id])
 
     useEffect(() => {
-        getMedicationById(selectedMed.id)
+        if(selectedMed.id > 0){
+            getMedicationById(selectedMed.id)
             .then((medication) => setCurrentMed(medication));
+        }
     }, [selectedMed.id])
 
     const currentDate = new Date();
@@ -72,7 +76,6 @@ export const MedDoseTracker = ({ admissionId }) => {
                     <h3>Medication Tracker</h3>
 
                     <FormGroup>
-                        <Label for="medicationDropdown">Select Medication:</Label>
                         <Input
                             className="post-input"
                             type="select"
@@ -85,7 +88,7 @@ export const MedDoseTracker = ({ admissionId }) => {
                                 setSelectedMed(copy)
                             }}
                         >
-                            <option value="">Select...</option>
+                            <option value="0">Select Medication</option>
                             {medList.map((medication) => (
                                 <option key={medication.id} value={medication.id}>{medication.medicationName}</option>
                             ))}

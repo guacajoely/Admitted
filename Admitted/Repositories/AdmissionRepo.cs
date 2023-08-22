@@ -199,6 +199,7 @@ namespace Admitted.Repositories
             }
         }
 
+
         public Admission GetAdmissionById(int id)
         {
             using (var conn = Connection)

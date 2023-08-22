@@ -17,6 +17,17 @@ export const getInactiveAdmissions = (userId) => {
         .then((res) => res.json())
 };
 
+export const checkIfActiveAdmissions = (userId) => {
+    return fetch(`${baseUrl}/CheckActives/${userId}`)
+        .then((res) => res.json())
+};
+
+export const checkIfInactiveAdmissions = (userId) => {
+    return fetch(`${baseUrl}/CheckInactives/${userId}`)
+        .then((res) => res.json())
+};
+
+
 
 export const addAdmission = (admissionObject) => {
     return fetch(baseUrl, {
