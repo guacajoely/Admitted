@@ -16,20 +16,22 @@ After cloning this repository to your own machine,
 
 **Create the Database:**
 1. Open Visual Studio.
-2. At the start screen, select `Open a Local Folder`.
-4. Navigate to your workspace directory, open the `Admitted` folder, then select the SQL folder.
+2. At the start screen, select ``Open a Local Folder``.
+4. Navigate to your workspace directory, open the ``Admitted`` folder, then select the SQL folder.
 5. Execute BOTH .sql files in the [SQL folder](https://github.com/guacajoely/Admitted/tree/main/SQL) with the green play button in the top left of the window. (The first file creates the database and tables if they don’t already exist, and the second file inserts some sample data into those tables for testing)
 
 **Run the API:**
 1. Open Visual Studio.
-2. At the start screen, select `Open a project or solution`.
-3. Navigate to your workspace directory, open the `Admitted` folder, and select the **.sln** file to run the solution.
-4. Hit the Green play button on the toolbar that says "Admitted".
-5. This will run the API along with an API tool [Swagger](https://swagger.io/docs/specification/2-0/what-is-swagger/) for testing at the address `https://localhost:5001/swagger/index` and open it in your default browser.
+2. At the start screen, select ``Open a project or solution``.
+3. Navigate to your workspace directory, open the ``Admitted`` folder, and select the **.sln** file to run the solution.
+4. Navigate to your Solution Explorer, right click the project file named "Admitted" and click ``Manage NuGet Packages``.
+5. Then, install these 2 packages: ``Microsoft.Data.SqlClient`` and ``Microsoft.AspNetCore.Cors``. 
+5. Hit the Green play button on the toolbar that says "Admitted".
+6. This will run the API along with an API tool [Swagger](https://swagger.io/docs/specification/2-0/what-is-swagger/) for testing at the address ``https://localhost:5001/swagger/index`` and open it in your default browser.
 
 **Run the Client:**
-1. In your command line, cd into the [Client Folder](https://github.com/guacajoely/Admitted/tree/main/Admitted/Client/admitted), and into the folder named `Admitted`.
-2. Run `npm install react-scripts`. Once this has been installed, run `npm start`.
-3. This will run the React app at the address `http://localhost:3000/` and open it in your default browser.
+1. In your command line, cd into the [Client Folder](https://github.com/guacajoely/Admitted/tree/main/Admitted/Client/admitted), and into the folder named ``Admitted``.
+2. You can confirm that you're in the right directory by looking for a ``package.json`` file (`LS` in the terminal to view files) then run `npm install` which should automatically install all the dependencies in the package.json file.
+3. Once these have been installed, run `npm start`. This will run the React app at the address ``http://localhost:3000/`` and open it in your default browser.
 
    
