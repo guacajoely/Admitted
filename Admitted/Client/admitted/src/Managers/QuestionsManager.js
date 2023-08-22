@@ -5,6 +5,16 @@ export const getQuestionList = (admissionId) => {
         .then((res) => res.json())
 };
 
+export const getQuestionById = (id) => {
+    return fetch(`${baseUrl}/GetById?Id=${id}`)
+        .then((res) => res.json())
+};
+
+export const getAllQuestions = () => {
+    return fetch(baseUrl)
+        .then((res) => res.json())
+};
+
 export const addQuestion = (questionObject) => {
     return fetch(baseUrl, {
         method: "POST",
@@ -21,13 +31,6 @@ export const addQuestion = (questionObject) => {
     });
 };
 
-
-export const getQuestionById = (id) => {
-    return fetch(`${baseUrl}/GetById?Id=${id}`)
-        .then((res) => res.json())
-};
-
-
 export const editQuestion = (question) => {
     return fetch(`${baseUrl}/${question.Id}`, {
         method: "PUT",
@@ -43,8 +46,3 @@ export const deleteQuestion = (id) => {
         method: "DELETE",
     }).then(getAllQuestions)
 }
-
-export const getAllQuestions = () => {
-    return fetch(baseUrl)
-        .then((res) => res.json())
-};

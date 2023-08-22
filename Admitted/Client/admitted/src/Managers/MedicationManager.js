@@ -21,12 +21,10 @@ export const addMedication = (medicationObject) => {
     });
 };
 
-
 export const getMedicationById = (id) => {
     return fetch(`${baseUrl}/GetById?Id=${id}`)
         .then((res) => res.json())
 };
-
 
 export const editMedication = (medication) => {
     return fetch(`${baseUrl}/${medication.Id}`, {

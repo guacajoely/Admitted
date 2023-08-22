@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Button } from "reactstrap"
 import { useState, useEffect, useRef } from "react";
 import { editAdmission, getActiveAdmission, getInactiveAdmissions } from "../../Managers/AdmissionManager.js";
@@ -21,9 +21,6 @@ export const Admission = ({ userId, setInactiveAdmissions }) => {
     //grab user from localStorage
     const localUser = localStorage.getItem("user");
     const UserObject = JSON.parse(localUser);
-
-    //use Nav from react router
-    const navigate = useNavigate();
 
     //SCROLL TO FUNCTIONALITY
     const mainRef = useRef(null);
@@ -50,13 +47,13 @@ export const Admission = ({ userId, setInactiveAdmissions }) => {
     //CONVERT DR VISIT TIME TO AM/PM
     function toTimeWithAMPM(militaryTime) {
         militaryTime = militaryTime.split(':');
-        return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
+        return (militaryTime[0] > 12) ? (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM' : militaryTime.join(':') + ' AM'
     }
 
     //nurse shift change DOES NOT need an AM/PM because occurs twice daily, so removed
     function toTimeWithOutAMPM(militaryTime) {
         militaryTime = militaryTime.split(':');
-        return (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) ? (militaryTime[0] - 12) + ':' + militaryTime[1] : militaryTime.join(':')
+        return (militaryTime[0] > 12) ? (militaryTime[0] - 12) + ':' + militaryTime[1] : militaryTime.join(':')
     }
 
     const handleDeleteButtonClick = (e) => {
@@ -85,7 +82,6 @@ export const Admission = ({ userId, setInactiveAdmissions }) => {
                 .then((admission) => setAdmission(admission))
                 .then(() => getInactiveAdmissions(UserObject.id))
                 .then((admissions) => setInactiveAdmissions(admissions))
-
         }
     }
 

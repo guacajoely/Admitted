@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, FormGroup, Input, Label } from "reactstrap";
-import { editAdmission, getActiveAdmission, getAdmissionById } from "../../Managers/AdmissionManager.js";
+import { editAdmission, getAdmissionById } from "../../Managers/AdmissionManager.js";
 
 export const AdmissionEdit = () => {
 
