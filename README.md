@@ -31,7 +31,8 @@ After cloning this repository to your own machine,
 
 **Run the Client:**
 1. In your command line, cd into the [Client Folder](https://github.com/guacajoely/Admitted/tree/main/Admitted/Client/admitted), and into the folder named ``Admitted``.
-2. You can confirm that you're in the right directory by looking for a ``package.json`` file (`LS` in the terminal to view files) then run `npm install` which should automatically install all the dependencies in the package.json file.
-3. Once these have been installed, run `npm start`. This will run the React app at the address ``http://localhost:3000/`` and open it in your default browser.
+2. You can confirm that you're in the right directory by looking for a ``package.json`` file (`LS` in the terminal to view files).
+3. Make sure you have node.js installed, then run `npm install` which should automatically install all the dependencies in the package.json file.
+4. Once these have been installed, run `npm start`. This will launch the React app at the address ``http://localhost:3000/`` and open it in your default browser.
 
    
